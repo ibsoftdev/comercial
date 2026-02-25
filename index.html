@@ -620,13 +620,16 @@
     <div class="card">
       <div class="card-header">Resumen</div>
       <div class="card-body">
-        <ul style="line-height: 1.8; color: var(--text); padding-left: 1.25rem;">
-          <li>Ciclo de desarrollo basado en JSON: definición → Tablas → DynamicForm despliega Formas Configurables</li>
-          <li>Definición JSON con control completo de interfaz (layout, navegación, validaciones, listas de valores)</li>
-          <li>Consultas de datos mediante funciones de BD configurables</li>
-          <li>Mantenimiento ágil sin redespliegue</li>
-          <li>Extensibilidad con componentes específicos (Resumen, etc.)</li>
+        <p style="margin: 0 0 1rem 0; color: var(--text); text-align: justify;">El <strong>Módulo de Formas Configurables</strong> permite construir y evolucionar aplicaciones de captura y flujos de negocio a partir de configuración (JSON en tablas), reduciendo tiempo de desarrollo y dependencia de redespliegues. A continuación se recogen los puntos clave de la propuesta:</p>
+        <ul style="line-height: 1.8; color: var(--text); padding-left: 1.25rem; margin: 0;">
+          <li><strong>Ciclo de desarrollo basado en JSON:</strong> definición del esquema → registro en tablas → API de ibForms (Spring Boot) expone la configuración → el frontend (React / DynamicForm) despliega las Formas de manera dinámica, sin código específico por pantalla.</li>
+          <li><strong>Definición JSON con control completo de interfaz:</strong> tipos de presentación, validaciones, listas de valores, comportamientos condicionales, orden de pantallas, distribución de componentes y navegación; además, es posible incluir componentes personalizados propios de la aplicación sin incorporarlos a la librería.</li>
+          <li><strong>Consultas de datos mediante funciones de BD configurables:</strong> las fuentes de datos se definen por configuración (filtros, tabla de resultados, API de búsqueda, paginación), reutilizando lógica ya existente en la base de datos.</li>
+          <li><strong>Mantenimiento ágil:</strong> en la mayoría de los casos, los cambios se realizan actualizando la configuración en las tablas, sin redespliegue; perfiles funcionales pueden asumir muchas de estas actualizaciones, con trazabilidad y posibilidad de rollback.</li>
+          <li><strong>Extensibilidad:</strong> la librería ibForms permite extender el catálogo de componentes (pantallas de Resumen, tablas maestro-detalle, wizards) para dominios concretos, manteniendo el mismo modelo de configuración.</li>
+          <li><strong>Casos de uso amplios:</strong> aplicaciones nuevas, migración desde legacy (p. ej. Oracle Forms) y actuación como app satélite de captura para plataformas de flujos (Make, n8n), con integración vía HTTP y JSON.</li>
         </ul>
+        <p style="margin: 1rem 0 0; color: var(--text); text-align: justify; font-size: 0.95rem;">En conjunto, el módulo ofrece una vía práctica para centralizar la lógica de presentación y comportamiento en configuración y en una librería reutilizable, favoreciendo la coherencia entre módulos y la evolución ágil de los flujos de negocio.</p>
       </div>
     </div>
 
