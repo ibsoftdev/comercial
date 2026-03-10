@@ -14,7 +14,7 @@
       flex-wrap: wrap;
       background-image: url('ImagenEmpresa.png');
       background-repeat: no-repeat;
-      background-position: -0.5cm calc(50% - 1cm);
+      background-position: center center;
       background-size: cover;
       min-height: 120px;
     }
@@ -22,10 +22,34 @@
       max-width: 65%;
       min-width: 200px;
       text-align: right;
-      padding: 0.5rem 0;
+      padding: 0.6rem 0 0.75rem 0;
       color: var(--primary-dark);
+      border-bottom: 2px solid rgba(0, 33, 113, 0.2);
     }
-    .comercial-header .title-wrap h1,
+    .comercial-header .title-wrap h1 {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--primary-dark);
+      font-weight: 600;
+      letter-spacing: 0.015em;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .comercial-header .title-wrap h1 .header-line-1 {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+    }
+    .comercial-header .title-wrap h1 .header-line-2,
+    .comercial-header .title-wrap h1 .header-line-3 {
+      display: block;
+      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .comercial-header .title-wrap h1 .header-line-2 { margin-bottom: 0.2rem; }
     .comercial-header .title-wrap p {
       color: var(--primary-dark);
     }
@@ -38,6 +62,7 @@
       opacity: 0.95;
     }
     .intro-propuesta { max-width: calc(100% - 1cm - 1.5rem - 1cm); margin-left: 1cm; margin-right: 0; }
+    .intro-propuesta h2 { font-size: 1.05rem; font-weight: 600; color: var(--primary-dark); margin: 0 0 0.75rem 0; }
     .intro-propuesta p { text-align: justify; }
     .punto-clave {
       display: flex;
@@ -74,6 +99,10 @@
     }
     .punto-clave-expandido .texto p { margin-bottom: 0.75rem; }
     .punto-clave-expandido .texto p:last-of-type { margin-bottom: 0; }
+    .punto-servicios-potenciar .texto ul li { margin-bottom: 0.85rem; }
+    .punto-servicios-potenciar .texto ul li:last-child { margin-bottom: 0; }
+    .punto-caracteristicas-considerar .texto ul li { margin-bottom: 0.85rem; text-align: justify; }
+    .punto-caracteristicas-considerar .texto ul li:last-child { margin-bottom: 0; }
     .ciclo-desarrollo {
       margin: 0.75rem 0 0;
       padding-left: 1.25rem;
@@ -99,6 +128,12 @@
     .subpunto-item.subpunto-componentes .subpunto-texto { text-align: justify; }
     .subpunto-item.subpunto-consultas .subpunto-consultas-arriba { text-align: justify; }
     .subpunto-item.subpunto-consultas .subpunto-consultas-fila .subpunto-texto { text-align: justify; }
+    .subpunto-item.subpunto-mantenimiento { flex-direction: column; align-items: stretch; }
+    .subpunto-mantenimiento-arriba { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.55; color: var(--text); text-align: justify; }
+    .subpunto-mantenimiento-arriba strong { color: var(--primary-dark); }
+    .subpunto-mantenimiento-fila { display: flex; flex-direction: row; align-items: flex-start; gap: 1.25rem; margin-left: -1rem; margin-right: -1rem; width: calc(100% + 2rem); }
+    .subpunto-mantenimiento-fila .subpunto-img { flex-shrink: 0; width: 400px; height: 257px; object-fit: contain; object-position: left top; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); order: 1; background: #fafafa; }
+    .subpunto-mantenimiento-fila .subpunto-texto { flex: 1; min-width: 0; margin: 0; order: 2; text-align: justify; }
     .subpunto-item.subpunto-mantenimiento .subpunto-texto { text-align: justify; }
     .subpunto-item.subpunto-despliegue .subpunto-texto { text-align: justify; }
     .subpunto-item {
@@ -264,7 +299,13 @@
     }
     .punto2-desglose li { margin-bottom: 0.5rem; }
     .punto2-desglose li:last-child { margin-bottom: 0; }
-    .punto2-item.punto2-ibforms .punto2-img { margin-top: 2cm; width: 364px; height: 234px; }
+    .punto2-item.punto2-ibforms { flex-direction: column; align-items: stretch; }
+    .punto2-ibforms-arriba { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.55; color: var(--text); text-align: justify; }
+    .punto2-ibforms-arriba strong { color: #e65100; }
+    .punto2-ibforms-fila { display: flex; flex-direction: row; align-items: flex-start; gap: 1.25rem; }
+    .punto2-ibforms-fila .punto2-texto { flex: 1; min-width: 0; margin: 0; text-align: justify; }
+    .punto2-ibforms-fila .punto2-img { flex-shrink: 0; width: 364px; height: 234px; object-fit: cover; border-radius: 6px; box-shadow: 0 2px 8px rgba(230, 81, 0, 0.15); }
+    .punto2-item.punto2-ibforms .punto2-img { margin-top: 0; }
     .punto2-item.punto2-modulos .punto2-texto { text-align: justify; }
     .punto2-item.punto2-modulos .punto2-desglose p,
     .punto2-item.punto2-modulos .punto2-desglose li { text-align: justify; }
@@ -295,6 +336,53 @@
     .comparativa-tabla tr:nth-child(even) { background: #fafafa; }
     .comparativa-tabla .check { color: var(--success); font-weight: bold; }
     .comparativa-tabla .cross { color: #c62828; }
+    .tabla-estimacion {
+      width: 100%;
+      max-width: 560px;
+      border-collapse: collapse;
+      margin: 1rem auto;
+      font-size: 0.95rem;
+    }
+    .tabla-estimacion th,
+    .tabla-estimacion td {
+      border: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+      text-align: left;
+    }
+    .tabla-estimacion th {
+      background: var(--primary-dark);
+      color: white;
+      font-weight: 600;
+    }
+    .tabla-estimacion tr:nth-child(even) { background: #fafafa; }
+    .tabla-funcionalidades-portal {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.25rem 0;
+      font-size: 0.9rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .tabla-funcionalidades-portal th {
+      background: var(--primary-dark);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border: none;
+    }
+    .tabla-funcionalidades-portal td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text);
+    }
+    .tabla-funcionalidades-portal tr:last-child td { border-bottom: none; }
+    .tabla-funcionalidades-portal tr:nth-child(even) td { background: #fafafa; }
+    .tabla-funcionalidades-portal tr:hover td { background: #f5f8fa; }
+    .tabla-funcionalidades-portal .grupo-nombre { font-weight: 600; color: var(--primary-dark); white-space: nowrap; }
+    .tabla-funcionalidades-portal .grupo-items { margin: 0; padding-left: 1.1rem; line-height: 1.6; }
     .casos-uso-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -356,6 +444,8 @@
     @media (max-width: 600px) {
       .punto2-item { flex-direction: column; align-items: center; }
       .punto2-item .punto2-img { width: 100%; max-width: 320px; height: auto; }
+      .punto2-ibforms-fila { flex-direction: column; align-items: center; }
+      .punto2-ibforms-fila .punto2-img { width: 100%; max-width: 364px; height: auto; }
       .punto3-migracion-imagenes { flex-direction: column; align-items: center; }
       .punto3-migracion-imagenes .punto3-img { width: 100%; max-width: 320px; }
       .punto4-fila-texto-imagen { flex-direction: column; align-items: center; }
@@ -369,6 +459,8 @@
       .subpunto-item.img-ampliada .subpunto-img { width: 100%; max-width: 380px; height: auto; min-height: 200px; }
       .subpunto-consultas-fila { flex-direction: column; align-items: center; }
       .subpunto-consultas-fila .subpunto-img { width: 100%; max-width: 364px; height: auto; }
+      .subpunto-mantenimiento-fila { flex-direction: column; align-items: center; margin-left: 0; margin-right: 0; width: 100%; }
+      .subpunto-mantenimiento-fila .subpunto-img { width: 100%; max-width: 400px; height: auto; }
     }
   </style>
 </head>
@@ -376,14 +468,13 @@
   <div class="app-wrap">
     <header class="flow-header comercial-header">
       <div class="title-wrap">
-        <h1>Módulo de Formas Configurables</h1>
-        <p class="header-tagline">Secuencias de captura de datos definidas por configuración — desarrollo ágil y evolución sin redespliegue.</p>
+        <h1><span class="header-line-1">Propuesta de Valor</span><span class="header-line-2">para el Plan estratégico 2026-2027</span><span class="header-line-3">de Banesco Seguros Venezuela</span></h1>
       </div>
     </header>
 
     <div class="intro intro-propuesta">
-      <h2>Propuesta de valor</h2>
-      <p>El <strong>Módulo de Formas Configurables</strong> permite crear secuencias completas de pantallas de captura de datos para problemas de negocio diversos, a partir de archivos de configuración JSON registrados en tablas de la base de datos. La idea central es poder <strong>construir aplicaciones nuevas</strong> o <strong>actualizar aplicaciones existentes</strong> de una forma <strong>fácil y confiable</strong>: sin depender de redespliegues para cada cambio de pantalla o de negocio, y con un mismo modelo de configuración para todos los flujos. Esto se traduce en <strong>reducción del tiempo de desarrollo</strong> y en una <strong>evolución ágil de los flujos de captura</strong> mediante configuración en lugar de programación, lo que permite adaptar con mayor velocidad las soluciones a nuevos productos o procesos.</p>
+      <h2>Módulo de Formas Configurables: nuevo acercamiento de Desarrollo de Aplicaciones</h2>
+      <p>Es una librería de componentes FrontEnd y Backend que permite crear secuencias completas de pantallas de captura de datos para problemas de negocio diversos, a partir de archivos de configuración JSON registrados en tablas de la base de datos. La idea central es poder <strong>construir aplicaciones nuevas</strong> o <strong>actualizar aplicaciones existentes</strong> de una forma <strong>fácil y confiable</strong>: sin depender de redespliegues para cada cambio de pantalla o de negocio, y con un mismo modelo de configuración para todos los flujos. Esto se traduce en <strong>reducción del tiempo de desarrollo</strong> y en una <strong>evolución ágil de los flujos de captura</strong> mediante configuración en lugar de programación, lo que permite adaptar con mayor velocidad las soluciones a nuevos productos o procesos.</p>
     </div>
 
     <div class="card">
@@ -435,8 +526,14 @@
                 </div>
               </div>
               <div class="subpunto-item subpunto-mantenimiento p1-naranja">
-                <div class="subpunto-texto">
-                  <strong>7. Mantenimiento sencillo</strong> — Una vez desplegadas las Formas, el mantenimiento se realiza modificando únicamente, en la mayoría de los casos, los valores de configuración en las tablas, sin cambios en el código de la aplicación. Cambios de etiquetas, textos de ayuda, orden de campos, validaciones o nuevos pasos en un flujo se resuelven actualizando la configuración y, si aplica, los datos en BD, reduciendo el tiempo de entrega y el riesgo asociado a redespliegues. Es posible ajustar tipos de presentación, listas de valores, comportamientos condicionales y reglas de negocio declaradas en la configuración sin tocar el frontend ni el backend; en muchos casos, perfiles funcionales o equipos de producto pueden asumir estas actualizaciones con un conocimiento mínimo técnico. La trazabilidad de los cambios queda en la base de datos, lo que facilita auditorías y, en su caso, rollbacks controlados.
+                <div class="subpunto-mantenimiento-arriba">
+                  <strong>7. Mantenimiento sencillo</strong> — Una vez desplegadas las Formas, el mantenimiento se realiza modificando únicamente, en la mayoría de los casos, los valores de configuración en las tablas, sin cambios en el código de la aplicación. Cambios de etiquetas, textos de ayuda, orden de campos, validaciones o nuevos pasos en un flujo se resuelven actualizando la configuración y, si aplica, los datos en BD, reduciendo el tiempo de entrega y el riesgo asociado a redespliegues.
+                </div>
+                <div class="subpunto-mantenimiento-fila">
+                  <img src="subpunto-07-mantenimiento-sencillo.png" alt="Mantenimiento sencillo: actualizar configuración en tablas, sin tocar código; trazabilidad y rollback" class="subpunto-img">
+                  <div class="subpunto-texto">
+                    Es posible ajustar tipos de presentación, listas de valores, comportamientos condicionales y reglas de negocio declaradas en la configuración sin tocar el frontend ni el backend; en muchos casos, perfiles funcionales o equipos de producto pueden asumir estas actualizaciones con un conocimiento mínimo técnico. La trazabilidad de los cambios queda en la base de datos, lo que facilita auditorías y, en su caso, rollbacks controlados.
+                  </div>
                 </div>
               </div>
               <div class="subpunto-item subpunto-despliegue p1-verde">
@@ -445,7 +542,7 @@
                 </div>
               </div>
               <div class="ilustracion-despliegue" style="text-align: center; margin-top: 1.25rem;">
-                <img src="despliegue-successful-launch.png" alt="Despliegue: app en producción, sin redespliegue de código" style="max-width: 100%; width: 480px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <img src="despliegue-evolucion-sin-redeploy.png" alt="Despliegue: configuración en tablas, publicar cambios sin redesplegar; contenedores Docker/Podman, Node o Spring Boot; integración en distintos entornos" style="max-width: 100%; width: 480px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
               </div>
             </div>
             <p>En resumen: <em>configuración JSON → persistencia en Tablas → DynamicForm las desplega como Formas Configurables</em>. El ciclo es ágil y centrado en datos.</p>
@@ -473,10 +570,15 @@
                   <p>Frente a esto, el modelo de Formas Configurables centraliza la lógica de presentación y comportamiento en una librería (ibForms) y en configuración (JSON en tablas), reduciendo la cantidad de componentes a mantener y favoreciendo la reutilización en todos los módulos.</p>
                 </div>
               </div>
-              <div class="punto2-item punto2-ibforms item-naranja img-derecha">
-                <img src="punto2-ibforms-reutilizacion.png" alt="ibForms y reutilización" class="punto2-img">
-                <div class="punto2-texto">
-                  <strong>Librería ibForms y reutilización.</strong> Construir cada módulo de forma independiente y homogénea: formularios, tablas, navegación, validación y enlace a datos están encapsulados en la librería. La generación y el mantenimiento de los proyectos de configuración JSON pueden apoyarse en herramientas de IA, alimentadas con el modelo de configuración existente.
+              <div class="punto2-item punto2-ibforms item-naranja">
+                <div class="punto2-ibforms-arriba">
+                  <strong>Librería ibForms y reutilización.</strong> Construir cada módulo de forma independiente y homogénea: formularios, tablas, navegación, validación y enlace a datos están encapsulados en la librería.
+                </div>
+                <div class="punto2-ibforms-fila">
+                  <div class="punto2-texto">
+                    La generación y el mantenimiento de los proyectos de configuración JSON pueden apoyarse en herramientas de IA, alimentadas con el modelo de configuración existente. Al tener el esquema (formas dinámicas, filas, grupos, campos, validaciones) como referencia, las herramientas pueden proponer o completar configuraciones a partir de descripciones en lenguaje natural o de ejemplos ya desplegados, reduciendo el tiempo de creación y la probabilidad de errores de transcripción. El resultado se mantiene alineado con el modelo que ibForms espera, de modo que la evolución de los JSON sigue siendo ágil y coherente con la librería.
+                  </div>
+                  <img src="punto2-ibforms-reutilizacion.png" alt="ibForms y reutilización" class="punto2-img">
                 </div>
               </div>
               <div class="punto2-item punto2-como-construir item-verde img-abajo">
@@ -511,7 +613,7 @@
             <div class="card" style="margin-top: 1.5rem;">
               <div class="card-header">Beneficios: Comparativa de desarrollo tradicional vs Formas Configurables basadas en Json</div>
               <div class="card-body">
-                <p style="margin-bottom: 0.75rem; color: var(--text);">Ventajas del modelo basado en configuración frente a desarrollar cada pantalla a mano:</p>
+                <p style="margin-bottom: 0.75rem; color: var(--text);">Ventajas del modelo basado en configuración frente a desarrollar cada pantalla como un caso particular:</p>
                 <table class="comparativa-tabla">
                   <thead>
                     <tr>
@@ -573,7 +675,7 @@
           <div class="texto">
             <h4>Integración con plataformas de flujos de trabajo (Make, n8n, etc.)</h4>
             <div class="punto4-fila-texto-imagen">
-              <p class="punto4-texto">Las plataformas de integración y automatización de flujos —como <strong>Make</strong> o <strong>n8n</strong>— orquestan procesos entre sistemas (notificaciones, escritura en BD, envío a CRMs, etc.), pero suelen requerir <strong>aplicaciones satélite</strong> que capturen los datos que luego alimentan esos flujos. Es decir: alguien debe introducir la información en alguna interfaz; esa interfaz envía un payload (por ejemplo JSON) a un webhook o API, y la plataforma dispara el workflow a partir de ese dato.</p>
+              <p class="punto4-texto">Las plataformas de integración y automatización de flujos —como <strong>Make</strong> o <strong>n8n</strong>— orquestan procesos entre sistemas (notificaciones, escritura en BD, envío a CRMs, etc.), pero suelen requerir <strong>aplicaciones modulares</strong> que capturen los datos que luego alimentan esos flujos. Es decir: alguien debe introducir la información en alguna interfaz; esa interfaz envía un payload (por ejemplo JSON) a un webhook o API, y la plataforma dispara el workflow a partir de ese dato.</p>
               <div class="punto4-img-wrap"><img src="integracion-flujos-satelite.png" alt="ibForms como app satélite de captura para Make / n8n"></div>
             </div>
             <p>Las aplicaciones construidas con <strong>ibForms</strong> encajan de forma natural en ese papel:</p>
@@ -589,47 +691,21 @@
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">Casos de uso y beneficiarios</div>
-      <div class="card-body">
-        <p style="margin-bottom: 0.5rem; color: var(--text);">El módulo resulta especialmente útil en:</p>
-        <div class="casos-uso-grid">
-          <div class="caso-uso-card">
-            <h4>Cotizadores y emisión</h4>
-            <p>Flujos de cotización por producto (personas, vehículo, pymes) con pasos configurables, validaciones y resumen, sin desarrollar una app por producto.</p>
-          </div>
-          <div class="caso-uso-card">
-            <h4>Solicitudes y expedientes</h4>
-            <p>Captura de solicitudes, órdenes médicas, siniestros o seguimientos con formularios y tablas que se adaptan por tipo de proceso.</p>
-          </div>
-          <div class="caso-uso-card">
-            <h4>Equipos de producto y operaciones</h4>
-            <p>Evolución de pantallas y textos sin depender de TI para cada cambio; la configuración se ajusta en datos.</p>
-          </div>
-          <div class="caso-uso-card">
-            <h4>Integración en ecosistemas</h4>
-            <p>Módulos desplegables en contenedores que consumen la API de ibForms y se integran con el resto del sistema.</p>
+        <div class="punto-clave texto-justificado">
+          <span class="numero">5</span>
+          <div class="texto">
+            <h4>Resumen</h4>
+            <p style="margin: 0 0 1rem 0; color: var(--text); text-align: justify;">El <strong>Módulo de Formas Configurables</strong> es una librería FrontEnd y Backend que permite construir y evolucionar aplicaciones de captura y flujos de negocio a partir de <strong>configuración JSON registrada en tablas</strong>, reduciendo tiempo de desarrollo y dependencia de redespliegues. A partir de lo expuesto en los puntos anteriores, se recogen los aspectos clave:</p>
+            <ul style="line-height: 1.8; color: var(--text); padding-left: 1.25rem; margin: 0;">
+              <li><strong>Ciclo de desarrollo:</strong> definición del esquema JSON (formas dinámicas, filas, grupos, campos, validaciones, comportamientos condicionales y control completo de la interfaz) → registro en tablas → API de ibForms (Spring Boot) expone la configuración → <strong>DynamicForm</strong> (React Hook Form) despliega las Formas de manera dinámica, sin código por pantalla. Incluye consultas basadas en fuentes de datos configurables (funciones de BD, filtros, paginación), mantenimiento mediante actualización de configuración en tablas (con trazabilidad y rollback) y despliegue en contenedores (Docker, Podman) sobre Node o Spring Boot, evolucionando flujos sin redesplegar.</li>
+              <li><strong>Construcción con ibForms:</strong> los sistemas se organizan en módulos por dominio (cotizaciones, órdenes médicas, siniestros, etc.); la librería centraliza formularios, tablas, navegación, validación y enlace a datos, evitando duplicación y favoreciendo reutilización. La configuración JSON puede crearse de forma manual o con apoyo de IA (desde texto o desde imágenes). Las aplicaciones se construyen sobre React y Spring Boot, con despliegue e integración estándar (seguridad, rendimiento, preparación para nube). Frente al desarrollo tradicional, el modelo basado en configuración permite nuevas pantallas o cambios de textos y validaciones sin redespliegue, con misma API y DynamicForm para todos los proyectos y configuración auditable en datos.</li>
+              <li><strong>Migración desde legacy:</strong> el modelo permite migrar con rapidez sistemas antiguos (p. ej. Oracle Forms): documentación de pantallas existentes (con apoyo de IA si se desea) → generación de la configuración JSON → registro y despliegue en ibForms. El resultado son las mismas funcionalidades en una aplicación moderna, con menor esfuerzo que una reescritura pantalla a pantalla.</li>
+              <li><strong>Integración con plataformas de flujos:</strong> las aplicaciones ibForms pueden actuar como <strong>app satélite de captura</strong> para Make, n8n o similares: formularios definidos por JSON, salida estándar en payload a webhook o API, e integración vía HTTP + JSON sin conector propietario, permitiendo orquestar procesos (notificaciones, BD, CRMs) a partir de los datos capturados.</li>
+            </ul>
+            <p style="margin: 1rem 0 0; color: var(--text); text-align: justify; font-size: 0.95rem;">En conjunto, el módulo centraliza la lógica de presentación y comportamiento en configuración y en una librería reutilizable (ibForms), favoreciendo la coherencia entre módulos, la evolución ágil de los flujos y su adaptación a nuevos productos o procesos sin multiplicar el esfuerzo de desarrollo.</p>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header">Resumen</div>
-      <div class="card-body">
-        <p style="margin: 0 0 1rem 0; color: var(--text); text-align: justify;">El <strong>Módulo de Formas Configurables</strong> permite construir y evolucionar aplicaciones de captura y flujos de negocio a partir de configuración (JSON en tablas), reduciendo tiempo de desarrollo y dependencia de redespliegues. A continuación se recogen los puntos clave de la propuesta:</p>
-        <ul style="line-height: 1.8; color: var(--text); padding-left: 1.25rem; margin: 0;">
-          <li><strong>Ciclo de desarrollo basado en JSON:</strong> definición del esquema → registro en tablas → API de ibForms (Spring Boot) expone la configuración → el frontend (React / DynamicForm) despliega las Formas de manera dinámica, sin código específico por pantalla.</li>
-          <li><strong>Definición JSON con control completo de interfaz:</strong> tipos de presentación, validaciones, listas de valores, comportamientos condicionales, orden de pantallas, distribución de componentes y navegación; además, es posible incluir componentes personalizados propios de la aplicación sin incorporarlos a la librería.</li>
-          <li><strong>Consultas de datos mediante funciones de BD configurables:</strong> las fuentes de datos se definen por configuración (filtros, tabla de resultados, API de búsqueda, paginación), reutilizando lógica ya existente en la base de datos.</li>
-          <li><strong>Mantenimiento ágil:</strong> en la mayoría de los casos, los cambios se realizan actualizando la configuración en las tablas, sin redespliegue; perfiles funcionales pueden asumir muchas de estas actualizaciones, con trazabilidad y posibilidad de rollback.</li>
-          <li><strong>Extensibilidad:</strong> la librería ibForms permite extender el catálogo de componentes (pantallas de Resumen, tablas maestro-detalle, wizards) para dominios concretos, manteniendo el mismo modelo de configuración.</li>
-          <li><strong>Casos de uso amplios:</strong> aplicaciones nuevas, migración desde legacy (p. ej. Oracle Forms) y actuación como app satélite de captura para plataformas de flujos (Make, n8n), con integración vía HTTP y JSON.</li>
-        </ul>
-        <p style="margin: 1rem 0 0; color: var(--text); text-align: justify; font-size: 0.95rem;">En conjunto, el módulo ofrece una vía práctica para centralizar la lógica de presentación y comportamiento en configuración y en una librería reutilizable, favoreciendo la coherencia entre módulos y la evolución ágil de los flujos de negocio.</p>
       </div>
     </div>
 
