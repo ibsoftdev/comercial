@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotización y Emisión · Portal de Seguros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos-demo.css">
+  <style>
+    :root {
+      --font-display: "Outfit", "Segoe UI", sans-serif;
+      --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .app-wrap { max-width: 980px; }
+
+    .comercial-header {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      background-image: url('ImagenEmpresa.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: cover;
+      background-color: #eef3f8;
+      min-height: 140px;
+      padding: 0.85rem 0.9rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .comercial-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.55) 40%, rgba(255,255,255,.92) 65%, #fff 80%);
+      pointer-events: none;
+    }
+    .comercial-header .title-wrap {
+      position: relative;
+      z-index: 1;
+      margin-left: auto;
+      max-width: 62%;
+      min-width: 280px;
+      padding: 0.95rem 1.15rem 1rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(13,71,161,.12);
+      border-left: 5px solid #0d47a1;
+      box-shadow: 0 6px 20px rgba(0,33,113,.12);
+    }
+    .comercial-header h1 {
+      font-family: var(--font-display);
+      margin: 0;
+      line-height: 1.28;
+      color: #061433;
+    }
+    .comercial-header .eyebrow {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0d47a1;
+      margin-bottom: 0.35rem;
+    }
+    .comercial-header .headline {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .comercial-header .subhead {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1565c0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .intro {
+      margin: 0 0 1.5rem;
+      max-width: 92%;
+    }
+    .intro h2 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      margin: 0 0 0.6rem;
+    }
+    .intro p {
+      margin: 0;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid #0d47a1;
+      border-radius: 12px;
+      padding: 0.95rem 1rem;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .pillar.auto { border-top-color: #0d47a1; }
+    .pillar.consulta { border-top-color: #00838f; }
+    .pillar.personas { border-top-color: #2e7d32; }
+    .pillar h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin: 0 0 0.35rem;
+      color: var(--primary-dark);
+    }
+    .pillar p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 0 0 1.35rem;
+    }
+    .benefit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.95rem 1.05rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .benefit h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.4rem;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .benefit p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .badge {
+      font-family: var(--font-display);
+      display: inline-block;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .badge-disponible {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+    }
+
+    .figure.figure-esquema img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    .cta-list {
+      margin: 0.75rem 0 0.25rem;
+      padding-left: 1.2rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .cta-list li { margin-bottom: 0.4rem; }
+    .cta-list strong {
+      font-family: var(--font-display);
+      color: var(--primary-dark);
+    }
+
+    .slide-block {
+      margin-bottom: 1.6rem;
+      padding: 1.2rem 1.35rem;
+      background: #fafafa;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+    }
+    .slide-block.teal { border-left-color: #00838f; }
+    .slide-block.green { border-left-color: #2e7d32; }
+    .slide-block.amber { border-left-color: #ef6c00; }
+    .slide-block h3 {
+      font-family: var(--font-display);
+      margin: 0 0 0.7rem;
+      color: var(--primary-dark);
+      font-size: 1.18rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .slide-block h3 .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    .slide-block.teal h3 .num { background: #00838f; }
+    .slide-block.green h3 .num { background: #2e7d32; }
+    .slide-block.amber h3 .num { background: #ef6c00; }
+    .slide-block > p {
+      margin: 0 0 0.85rem;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      margin: 0.75rem 0 1rem;
+    }
+    .feature {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .feature strong {
+      font-family: var(--font-display);
+      display: block;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .feature span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .figure {
+      margin: 1rem 0 0.35rem;
+      text-align: center;
+    }
+    .figure img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      background: #fff;
+      display: inline-block;
+    }
+    .figure .caption {
+      margin-top: 0.55rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .message-box {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+      border: 1px solid rgba(13,71,161,.25);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .message-box strong {
+      font-family: var(--font-display);
+    }
+
+    .chain {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      margin: 0.85rem 0 0;
+      justify-content: center;
+    }
+    .chain .chip {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: #e3f2fd;
+      color: #0d47a1;
+      border: 1px solid #90caf9;
+    }
+    .chain .arrow { color: #90a4ae; font-weight: 700; }
+
+    @media (max-width: 800px) {
+      .pillars, .feature-grid, .benefits { grid-template-columns: 1fr; }
+      .comercial-header .title-wrap { max-width: 100%; }
+      .comercial-header::before { background: rgba(255,255,255,.9); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-wrap">
+    <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+
+    <header class="comercial-header">
+      <div class="title-wrap">
+        <h1>
+          <span class="eyebrow">Capacidad disponible</span>
+          <span class="headline">Cotización y emisión</span>
+          <span class="subhead">Automóvil, Personas y manejo de cotizaciones</span>
+        </h1>
+      </div>
+    </header>
+
+    <div class="intro">
+      <span class="badge badge-disponible">Disponible</span>
+      <h2>Del interés a la póliza, en un solo flujo</h2>
+      <p>
+        Esta capacidad cubre el ciclo comercial completo: cotizar productos de
+        Automóvil (RCV y Casco) y de Personas (Gastos Funerarios), consultar y
+        retomar cotizaciones guardadas, y emitir la póliza con los datos,
+        documentos y confirmaciones necesarios. Todo construido con Formas
+        Configurables, listo para integrar al nuevo Portal.
+      </p>
+      <p style="margin-top: 0.75rem;">
+        No es un mockup ni un plan a futuro: es una capacidad operativa que
+        reutiliza el mismo patrón de wizard entre ramos, acelera a la fuerza
+        de ventas y deja el camino abierto para ampliar productos sin reinventar
+        la experiencia.
+      </p>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">
+        <h4>Cotizar con patrón único</h4>
+        <p>RCV, Casco y Personas comparten la misma lógica de planes, datos y resumen de prima.</p>
+      </div>
+      <div class="benefit">
+        <h4>Retomar sin fricción</h4>
+        <p>Consulta, carga e impresión de cotizaciones para cerrar la venta en el momento oportuno.</p>
+      </div>
+      <div class="benefit">
+        <h4>Emitir con evidencia</h4>
+        <p>Wizard de emisión con titular, documentos, confirmación y entrega de la póliza.</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar auto">
+        <h3>Automóvil</h3>
+        <p>Cotización RCV y Casco, y emisión de póliza con el mismo wizard</p>
+      </div>
+      <div class="pillar consulta">
+        <h3>Manejo de cotizaciones</h3>
+        <p>Búsqueda, carga para emitir e impresión de cotización o recibo</p>
+      </div>
+      <div class="pillar personas">
+        <h3>Personas / Funerario</h3>
+        <p>Cotización con grupo familiar y emisión con beneficiarios y documentos</p>
+      </div>
+    </div>
+
+    <figure class="figure figure-esquema">
+      <img src="assets/esquemas/cotiza-tres-pilares.png" alt="Tres pilares: Automóvil, manejo de cotizaciones y Personas / Funerario">
+      <figcaption class="caption">Tres pilares de la capacidad: Automóvil, manejo de cotizaciones y Personas</figcaption>
+    </figure>
+
+    <div class="card">
+      <div class="card-body">
+
+        <!-- 1 Cotización Auto RCV -->
+        <section class="slide-block">
+          <h3><span class="num">1</span> Cotización Automóvil — RCV</h3>
+          <p>
+            Flujo guiado para cotizar Responsabilidad Civil Vehicular: selección
+            de planes, datos del contratante y del vehículo, coberturas y resumen
+            de prima. El intermediario o el personal comercial cierran la
+            cotización en pocos pasos y la dejan lista para emitir — sin salir
+            del mismo patrón de Formas Configurables.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Selección de planes</strong>
+              <span>Comparación y elección de planes RCV según el producto ofertado.</span>
+            </div>
+            <div class="feature">
+              <strong>Contratante y vehículo</strong>
+              <span>Captura de identificación, datos del auto y parámetros de riesgo.</span>
+            </div>
+            <div class="feature">
+              <strong>Coberturas</strong>
+              <span>Ajuste de coberturas asociadas al plan elegido.</span>
+            </div>
+            <div class="feature">
+              <strong>Resumen de prima</strong>
+              <span>Vista consolidada de prima, frecuencia y detalle antes de guardar.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/auto-rcv-planes.png" alt="Cotización RCV: selección de planes">
+            <figcaption class="caption">Selección de planes RCV en el flujo de cotización</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/auto-rcv-resumen.png" alt="Cotización RCV: resumen de prima">
+            <figcaption class="caption">Resumen de cotización RCV listo para guardar</figcaption>
+          </figure>
+        </section>
+
+        <!-- 2 Cotización Auto Casco -->
+        <section class="slide-block">
+          <h3><span class="num">2</span> Cotización Automóvil — Casco</h3>
+          <p>
+            Misma experiencia de cotización, adaptada a Casco: producto, suma
+            asegurada, vehículo y coberturas, con resumen de prima coherente con
+            el modelo RCV para que la fuerza de ventas opere un solo patrón y
+            reduzca la curva de aprendizaje entre productos.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Producto Casco</strong>
+              <span>Selección del plan Casco y parámetros del producto.</span>
+            </div>
+            <div class="feature">
+              <strong>Vehículo y suma</strong>
+              <span>Datos del vehículo y suma asegurada para el cálculo.</span>
+            </div>
+            <div class="feature">
+              <strong>Coberturas Casco</strong>
+              <span>Configuración de coberturas propias del producto.</span>
+            </div>
+            <div class="feature">
+              <strong>Resumen unificado</strong>
+              <span>Misma lógica de resumen y guardado que en RCV.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/auto-casco.png" alt="Cotización Casco: pantallas del flujo">
+            <figcaption class="caption">Cotización Casco: contratante, vehículo y resumen</figcaption>
+          </figure>
+        </section>
+
+        <!-- 3 Consulta -->
+        <section class="slide-block teal">
+          <h3><span class="num">3</span> Consulta y carga de cotizaciones</h3>
+          <p>
+            Consola transversal para localizar cotizaciones de Auto, Funerario
+            y otros productos, retomarlas para emisión e imprimir cotización o
+            recibo. Cierra el puente entre “cotizar” y “emitir”, evitando
+            reprocesar datos ya capturados.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Búsqueda flexible</strong>
+              <span>Filtros por criterios de negocio para encontrar cotizaciones guardadas.</span>
+            </div>
+            <div class="feature">
+              <strong>Listado de resultados</strong>
+              <span>Vista clara de cotizaciones disponibles para gestionar.</span>
+            </div>
+            <div class="feature">
+              <strong>Cargar para emitir</strong>
+              <span>Editar / cargar la cotización y continuar el flujo de emisión.</span>
+            </div>
+            <div class="feature">
+              <strong>Impresión</strong>
+              <span>Impresión de cotización o recibo según el estado del caso.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/consulta-cotizaciones.png" alt="Manejo de cotizaciones: búsqueda y resultados">
+            <figcaption class="caption">Manejo de cotizaciones: búsqueda, listado y acciones</figcaption>
+          </figure>
+        </section>
+
+        <!-- 4 Emisión Auto -->
+        <section class="slide-block amber">
+          <h3><span class="num">4</span> Emisión Automóvil (RCV y Casco)</h3>
+          <p>
+            Wizard común para emitir pólizas RCV o Casco a partir de una
+            cotización: titular, pagador, vehículo, domiciliación, recaudos,
+            resumen de confirmación y entrega de la póliza. Un solo recorrido
+            operativo para ambos productos Auto.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Titular y pagador</strong>
+              <span>Datos personales, económicos y de contacto; pagador condicionado si es distinto del titular.</span>
+            </div>
+            <div class="feature">
+              <strong>Vehículo y beneficiario</strong>
+              <span>Datos del vehículo y, cuando aplica, beneficiario preferencial.</span>
+            </div>
+            <div class="feature">
+              <strong>Domiciliación y recaudos</strong>
+              <span>Registro de cuenta/tarjeta y carga de documentos de la póliza.</span>
+            </div>
+            <div class="feature">
+              <strong>Confirmación y póliza</strong>
+              <span>Resumen final, confirmación de emisión y acceso a la póliza emitida.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/auto-emision.png" alt="Emisión Auto: pasos del wizard">
+            <figcaption class="caption">Emisión Auto: titular, vehículo y pasos del wizard</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/auto-emision-docs.png" alt="Emisión Auto: recaudos y documentos">
+            <figcaption class="caption">Recaudos, documentos y cierre de la emisión</figcaption>
+          </figure>
+        </section>
+
+        <!-- 5 Cotización Funerario -->
+        <section class="slide-block green">
+          <h3><span class="num">5</span> Cotización Personas — Gastos Funerarios</h3>
+          <p>
+            Cotización de producto de Personas: selección de plan, datos del
+            contratante, grupo familiar / asegurados adicionales, resumen de
+            coberturas y frecuencia, y guardado de la cotización. Demuestra que
+            el mismo modelo escala a ramos distintos de Automóvil.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Producto y plan</strong>
+              <span>Selección de Gastos Funerarios y plan ofertado.</span>
+            </div>
+            <div class="feature">
+              <strong>Contratante</strong>
+              <span>Identificación y datos del contratante en el wizard.</span>
+            </div>
+            <div class="feature">
+              <strong>Grupo familiar</strong>
+              <span>Alta de asegurados adicionales y gestión de filas del grupo.</span>
+            </div>
+            <div class="feature">
+              <strong>Resumen y guardado</strong>
+              <span>Frecuencia de pago, planes y guardado de la cotización.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/funerario-cot.png" alt="Cotización Funerario: contratante y grupo familiar">
+            <figcaption class="caption">Cotización Funerario: contratante y grupo familiar</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/funerario-cot-resumen.png" alt="Cotización Funerario: resumen">
+            <figcaption class="caption">Resumen de cotización Personas / Funerario</figcaption>
+          </figure>
+        </section>
+
+        <!-- 6 Emisión Funerario -->
+        <section class="slide-block green">
+          <h3><span class="num">6</span> Emisión Personas — Gastos Funerarios</h3>
+          <p>
+            Emisión del producto Personas: declaración y documentos,
+            beneficiarios, resumen de confirmación y póliza emitida — alineado
+            con el patrón de emisión Auto, adaptado al ramo, para que el Portal
+            ofrezca una experiencia comercial coherente entre líneas de negocio.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Declaración y documentos</strong>
+              <span>Captura de declaración jurada y carga de recaudos.</span>
+            </div>
+            <div class="feature">
+              <strong>Beneficiarios</strong>
+              <span>Registro de beneficiarios del producto Personas.</span>
+            </div>
+            <div class="feature">
+              <strong>Confirmación</strong>
+              <span>Resumen previo a emitir y validación del caso.</span>
+            </div>
+            <div class="feature">
+              <strong>Póliza emitida</strong>
+              <span>Cierre del ciclo con la póliza disponible para el cliente.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/funerario-emi.png" alt="Emisión Funerario: pantallas del flujo">
+            <figcaption class="caption">Emisión Funerario: documentos, beneficiarios y póliza</figcaption>
+          </figure>
+        </section>
+
+        <!-- 7 Ciclo -->
+        <section class="slide-block">
+          <h3><span class="num">7</span> Un ciclo comercial reutilizable</h3>
+          <p>
+            Cotizar, consultar, cargar y emitir se repiten como patrón de negocio
+            en Automóvil y Personas. Eso acelera la adopción del Portal y permite
+            extender el mismo modelo a otros ramos sin reinventar la experiencia.
+          </p>
+
+          <figure class="figure figure-esquema">
+            <img src="assets/esquemas/cotiza-ciclo-comercial.png" alt="Ciclo comercial: Cotizar, Guardar, Consultar, Emitir y Póliza">
+            <figcaption class="caption">Ciclo comercial reutilizable: del interés a la póliza</figcaption>
+          </figure>
+
+          <ul class="cta-list">
+            <li><strong>Cotizar:</strong> planes, datos de riesgo y resumen de prima.</li>
+            <li><strong>Guardar:</strong> cotización persistida lista para retomar.</li>
+            <li><strong>Consultar:</strong> búsqueda, listado e impresión del caso.</li>
+            <li><strong>Emitir:</strong> wizard con datos, documentos y confirmación.</li>
+            <li><strong>Póliza:</strong> entrega del resultado al cliente y al negocio.</li>
+          </ul>
+
+          <figure class="figure">
+            <img src="assets/collages/ciclo-completo.png" alt="Ciclo cotización y emisión">
+            <figcaption class="caption">En la práctica: del interés a la póliza sobre pantallas reales</figcaption>
+          </figure>
+          <div class="message-box">
+            <strong>Mensaje clave:</strong> Cotización y Emisión ya están disponibles
+            como capacidad de negocio, construida con Formas Configurables.
+            Se integran al nuevo Portal reutilizando lo construido y el mismo
+            modelo para ampliar productos.
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <p style="margin: 1.5rem 0 2rem; text-align: center;">
+      <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+    </p>
+  </div>
+</body>
+</html>
