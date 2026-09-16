@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Órdenes Médicas · Portal de Seguros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos-demo.css">
+  <style>
+    :root {
+      --font-display: "Outfit", "Segoe UI", sans-serif;
+      --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .app-wrap {
+      max-width: 980px;
+      overflow: visible;
+    }
+    .card, .card-body { overflow: visible; }
+
+    .comercial-header {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      background-image: url('ImagenEmpresa.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: cover;
+      background-color: #eef3f8;
+      min-height: 140px;
+      padding: 0.85rem 0.9rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .comercial-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.55) 40%, rgba(255,255,255,.92) 65%, #fff 80%);
+      pointer-events: none;
+    }
+    .comercial-header .title-wrap {
+      position: relative;
+      z-index: 1;
+      margin-left: auto;
+      max-width: 62%;
+      min-width: 280px;
+      padding: 0.95rem 1.15rem 1rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(13,71,161,.12);
+      border-left: 5px solid #0d47a1;
+      box-shadow: 0 6px 20px rgba(0,33,113,.12);
+    }
+    .comercial-header h1 {
+      font-family: var(--font-display);
+      margin: 0;
+      line-height: 1.28;
+      color: #061433;
+    }
+    .comercial-header .eyebrow {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0d47a1;
+      margin-bottom: 0.35rem;
+    }
+    .comercial-header .headline {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .comercial-header .subhead {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1565c0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .intro {
+      margin: 0 0 1.5rem;
+      max-width: 92%;
+    }
+    .intro h2 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      margin: 0 0 0.6rem;
+    }
+    .intro p {
+      margin: 0;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid #0d47a1;
+      border-radius: 12px;
+      padding: 0.95rem 1rem;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .pillar.solicitud { border-top-color: #0d47a1; }
+    .pillar.atencion { border-top-color: #00838f; }
+    .pillar.cierre { border-top-color: #2e7d32; }
+    .pillar h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin: 0 0 0.35rem;
+      color: var(--primary-dark);
+    }
+    .pillar p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 0 0 1.35rem;
+    }
+    .benefit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.95rem 1.05rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .benefit h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.4rem;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .benefit p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .badge {
+      font-family: var(--font-display);
+      display: inline-block;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .badge-disponible {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+    }
+
+    .figure.figure-esquema img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    .cta-list {
+      margin: 0.75rem 0 0.25rem;
+      padding-left: 1.2rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .cta-list li { margin-bottom: 0.4rem; }
+    .cta-list strong {
+      font-family: var(--font-display);
+      color: var(--primary-dark);
+    }
+
+    .slide-block {
+      margin-bottom: 1.6rem;
+      padding: 1.2rem 1.35rem;
+      background: #fafafa;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+    }
+    .slide-block.teal { border-left-color: #00838f; }
+    .slide-block.green { border-left-color: #2e7d32; }
+    .slide-block.amber { border-left-color: #ef6c00; }
+    .slide-block h3 {
+      font-family: var(--font-display);
+      margin: 0 0 0.7rem;
+      color: var(--primary-dark);
+      font-size: 1.18rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .slide-block h3 .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    .slide-block.teal h3 .num { background: #00838f; }
+    .slide-block.green h3 .num { background: #2e7d32; }
+    .slide-block.amber h3 .num { background: #ef6c00; }
+    .slide-block > p {
+      margin: 0 0 0.85rem;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      margin: 0.75rem 0 1rem;
+    }
+    .feature {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .feature strong {
+      font-family: var(--font-display);
+      display: block;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .feature span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .figure {
+      margin: 1rem 0 0.35rem;
+      text-align: center;
+    }
+    .figure img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      background: #fff;
+      display: inline-block;
+    }
+    .figure .caption {
+      margin-top: 0.55rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* Punto 1 — mismo ancho/margen que el resto; imágenes más legibles en columna */
+    .slide-block.creacion {
+      overflow: visible;
+      padding-bottom: 1.45rem;
+    }
+    .slide-block.creacion .feature-grid {
+      margin-bottom: 1.15rem;
+    }
+    .slide-block.creacion .figure {
+      width: 100%;
+      margin: 1.25rem 0 0.55rem;
+    }
+    .slide-block.creacion .figure:first-of-type {
+      margin-top: 1rem;
+    }
+    .slide-block.creacion .figure img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+    .slide-block.creacion .figure .caption {
+      margin-top: 0.7rem;
+    }
+
+    .message-box {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+      border: 1px solid rgba(13,71,161,.25);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .message-box strong {
+      font-family: var(--font-display);
+    }
+
+    .chain {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      margin: 0.85rem 0 0;
+      justify-content: center;
+    }
+    .chain .chip {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: #e3f2fd;
+      color: #0d47a1;
+      border: 1px solid #90caf9;
+    }
+    .chain .arrow { color: #90a4ae; font-weight: 700; }
+
+    @media (max-width: 800px) {
+      .pillars, .feature-grid, .benefits { grid-template-columns: 1fr; }
+      .comercial-header .title-wrap { max-width: 100%; }
+      .comercial-header::before { background: rgba(255,255,255,.9); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-wrap">
+    <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+
+    <header class="comercial-header">
+      <div class="title-wrap">
+        <h1>
+          <span class="eyebrow">Capacidad disponible</span>
+          <span class="headline">Gestión de órdenes médicas</span>
+          <span class="subhead">Ciclo completo: solicitud, atención, extensión y egreso</span>
+        </h1>
+      </div>
+    </header>
+
+    <div class="intro">
+      <span class="badge badge-disponible">Disponible</span>
+      <h2>Atención primaria controlada de punta a punta</h2>
+      <p>
+        Esta capacidad cubre el ciclo de vida de una Orden Médica: desde la
+        solicitud y el comprobante, pasando por el ingreso del paciente,
+        la solicitud y autorización de extensiones, hasta el egreso que cierra
+        la atención. Prestadores y personal interno operan sobre el mismo
+        flujo, con consulta, documentos y trazabilidad en cada etapa —
+        construido con Formas Configurables e integrable al nuevo Portal.
+      </p>
+      <p style="margin-top: 0.75rem;">
+        No es un mockup ni un plan a futuro: es una capacidad operativa que
+        ordena la atención primaria con estatus claros, evidencia documental
+        y un patrón reutilizable para integrar al Portal unificado en la Fase 1.
+      </p>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">
+        <h4>Solicitud con comprobante</h4>
+        <p>Asegurado, servicio, proveedor y documentos con número de orden al confirmar.</p>
+      </div>
+      <div class="benefit">
+        <h4>Atención controlada</h4>
+        <p>Ingreso, extensiones y autorización con historial y estatus por etapa.</p>
+      </div>
+      <div class="benefit">
+        <h4>Egreso trazable</h4>
+        <p>Cierre de la atención con documentos, resumen y resultado egresado.</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar solicitud">
+        <h3>Solicitud</h3>
+        <p>Creación de la orden: asegurado, servicio, proveedor, documentos y comprobante</p>
+      </div>
+      <div class="pillar atencion">
+        <h3>Atención y extensión</h3>
+        <p>Ingreso, días adicionales y autorización según el estatus de la orden</p>
+      </div>
+      <div class="pillar cierre">
+        <h3>Egreso</h3>
+        <p>Cierre de la atención con documentos, resumen y resultado egresado</p>
+      </div>
+    </div>
+
+    <figure class="figure figure-esquema">
+      <img src="assets/esquemas/om-tres-pilares.png" alt="Tres pilares: solicitud, atención y extensión, y egreso">
+      <figcaption class="caption">Tres pilares de la capacidad: solicitud, atención y egreso</figcaption>
+    </figure>
+
+    <div class="card">
+      <div class="card-body">
+
+        <!-- 1 Creación -->
+        <section class="slide-block creacion">
+          <h3><span class="num">1</span> Creación de Orden Médica</h3>
+          <p>
+            Flujo guiado para abrir la solicitud: localizar al asegurado,
+            capturar el servicio y el motivo, seleccionar proveedor, adjuntar
+            documentos y confirmar. Al finalizar se entrega el comprobante
+            con el número de orden — el punto de partida del ciclo de atención.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Búsqueda del asegurado</strong>
+              <span>Identificación del paciente y contexto de la póliza / cobertura.</span>
+            </div>
+            <div class="feature">
+              <strong>Datos del servicio</strong>
+              <span>Tipo de atención, fechas y parámetros de la solicitud.</span>
+            </div>
+            <div class="feature">
+              <strong>Síntoma, motivo y proveedor</strong>
+              <span>Justificación clínica y selección del prestador.</span>
+            </div>
+            <div class="feature">
+              <strong>Documentos, resumen y comprobante</strong>
+              <span>Adjuntos, confirmación y comprobante con N° de orden.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/creacion-solicitud.png" alt="Creación OM: búsqueda y datos del servicio">
+            <figcaption class="caption">Búsqueda del asegurado y datos de la solicitud</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/creacion-motivo-proveedor.png" alt="Creación OM: motivo y proveedor">
+            <figcaption class="caption">Síntoma / motivo y selección de proveedor</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/creacion-docs-resumen.png" alt="Creación OM: documentos, resumen y comprobante">
+            <figcaption class="caption">Documentos, resumen y comprobante de la orden</figcaption>
+          </figure>
+        </section>
+
+        <!-- 2 Ingreso -->
+        <section class="slide-block teal">
+          <h3><span class="num">2</span> Registro de ingreso</h3>
+          <p>
+            El prestador localiza la orden solicitada, procesa el ingreso del
+            paciente, registra los datos de atención, adjunta documentos y
+            confirma. La orden pasa a estatus de atención en curso, lista
+            para extensión o egreso según el caso.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Consulta de órdenes</strong>
+              <span>Filtros por período, cédula, N° de orden y estatus.</span>
+            </div>
+            <div class="feature">
+              <strong>Procesar ingreso</strong>
+              <span>Acción disponible según el estatus de la orden.</span>
+            </div>
+            <div class="feature">
+              <strong>Datos y documentos</strong>
+              <span>Captura del ingreso y carga de recaudos asociados.</span>
+            </div>
+            <div class="feature">
+              <strong>Resultado en atención</strong>
+              <span>Confirmación y orden en estatus de atención activa.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/ingreso-proceso.png" alt="Ingreso: consulta y datos">
+            <figcaption class="caption">Consulta de órdenes y datos del ingreso</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/ingreso-cierre.png" alt="Ingreso: documentos, resumen y resultado">
+            <figcaption class="caption">Documentos, resumen y resultado del ingreso</figcaption>
+          </figure>
+        </section>
+
+        <!-- 3 Solicitud extensión -->
+        <section class="slide-block amber">
+          <h3><span class="num">3</span> Solicitud de extensión</h3>
+          <p>
+            Cuando la atención requiere días adicionales, el prestador solicita
+            la extensión sobre una orden en atención: justifica, adjunta
+            documentos y deja la orden pendiente de autorización — sin
+            interrumpir la trazabilidad del caso.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Órdenes en atención</strong>
+              <span>Localización de órdenes elegibles para extensión.</span>
+            </div>
+            <div class="feature">
+              <strong>Datos de la extensión</strong>
+              <span>Días adicionales y parámetros de la solicitud.</span>
+            </div>
+            <div class="feature">
+              <strong>Justificación y documentos</strong>
+              <span>Motivo clínico y recaudos de soporte.</span>
+            </div>
+            <div class="feature">
+              <strong>Pendiente de autorización</strong>
+              <span>La orden queda en estatus de extensión pendiente.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/extension-solicitud.png" alt="Solicitud de extensión: consulta y datos">
+            <figcaption class="caption">Consulta y datos de la extensión</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/extension-solicitud-cierre.png" alt="Solicitud de extensión: justificación y resultado">
+            <figcaption class="caption">Justificación, resumen y resultado pendiente</figcaption>
+          </figure>
+        </section>
+
+        <!-- 4 Autorización extensión -->
+        <section class="slide-block amber">
+          <h3><span class="num">4</span> Autorización de extensión</h3>
+          <p>
+            El analista revisa las órdenes con extensión pendiente, valida el
+            historial de movimientos, confirma o rechaza y deja la orden
+            autorizada para continuar la atención. La decisión queda documentada
+            en el mismo flujo.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Bandeja de pendientes</strong>
+              <span>Consulta filtrada por estatus de extensión pendiente.</span>
+            </div>
+            <div class="feature">
+              <strong>Autorizar extensión</strong>
+              <span>Revisión de contexto, ingreso y datos de la solicitud.</span>
+            </div>
+            <div class="feature">
+              <strong>Historial de movimientos</strong>
+              <span>Trazabilidad de la orden para apoyar la decisión.</span>
+            </div>
+            <div class="feature">
+              <strong>Resultado autorizado</strong>
+              <span>Confirmación y orden lista para seguir en atención.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/extension-autorizacion.png" alt="Autorización: consulta y confirmación">
+            <figcaption class="caption">Consulta y autorización de la extensión</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/extension-autorizacion-cierre.png" alt="Autorización: historial, resumen y resultado">
+            <figcaption class="caption">Historial, resumen y resultado autorizado</figcaption>
+          </figure>
+        </section>
+
+        <!-- 5 Egreso -->
+        <section class="slide-block green">
+          <h3><span class="num">5</span> Registro de egreso</h3>
+          <p>
+            Cierre del ciclo: el prestador procesa el egreso, registra los datos
+            de salida, adjunta documentos y confirma. La orden queda egresada
+            con trazabilidad completa, lista para consulta operativa y auditoría.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Procesar egreso</strong>
+              <span>Acción sobre órdenes en atención listas para cerrar.</span>
+            </div>
+            <div class="feature">
+              <strong>Datos del egreso</strong>
+              <span>Información de salida y cierre de la atención.</span>
+            </div>
+            <div class="feature">
+              <strong>Documentos de egreso</strong>
+              <span>Recaudos asociados al cierre.</span>
+            </div>
+            <div class="feature">
+              <strong>Orden egresada</strong>
+              <span>Resultado final con estatus de egreso.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/collages/egreso-proceso.png" alt="Egreso: consulta y datos">
+            <figcaption class="caption">Consulta y datos del egreso</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/egreso-cierre.png" alt="Egreso: documentos, resumen y resultado">
+            <figcaption class="caption">Documentos, resumen y resultado egresado</figcaption>
+          </figure>
+        </section>
+
+        <!-- 6 Ciclo -->
+        <section class="slide-block">
+          <h3><span class="num">6</span> Un ciclo de atención reutilizable</h3>
+          <p>
+            Solicitar, ingresar, extender, autorizar y egresar forman un patrón
+            claro de negocio para prestadores y operaciones. El mismo modelo
+            de Formas Configurables sostiene cada etapa y facilita su integración
+            al Portal unificado.
+          </p>
+
+          <figure class="figure figure-esquema">
+            <img src="assets/esquemas/om-ciclo-atencion.png" alt="Ciclo de atención: Crear, Ingresar, Extender, Autorizar y Egresar">
+            <figcaption class="caption">Ciclo de atención reutilizable: de la solicitud al egreso</figcaption>
+          </figure>
+
+          <ul class="cta-list">
+            <li><strong>Crear:</strong> solicitud con asegurado, servicio, proveedor y comprobante.</li>
+            <li><strong>Ingresar:</strong> inicio de la atención con datos y documentos.</li>
+            <li><strong>Extender:</strong> días adicionales justificados por el prestador.</li>
+            <li><strong>Autorizar:</strong> decisión del analista con historial y resultado.</li>
+            <li><strong>Egresar:</strong> cierre de la atención con trazabilidad completa.</li>
+          </ul>
+
+          <figure class="figure">
+            <img src="assets/collages/ciclo-completo.png" alt="Ciclo completo de órdenes médicas en recorrido serpenteante">
+            <figcaption class="caption">En la práctica: recorrido del ciclo sobre pantallas reales</figcaption>
+          </figure>
+          <div class="message-box">
+            <strong>Mensaje clave:</strong> la gestión de Órdenes Médicas ya está
+            disponible como capacidad de negocio, con ciclo de vida completo y
+            construida con Formas Configurables. Lista para integrar al nuevo Portal.
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <p style="margin: 1.5rem 0 2rem; text-align: center;">
+      <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+    </p>
+  </div>
+</body>
+</html>
