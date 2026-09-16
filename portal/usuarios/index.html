@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración y Gestión de Usuarios · Portal de Seguros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos-demo.css">
+  <style>
+    :root {
+      --font-display: "Outfit", "Segoe UI", sans-serif;
+      --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .app-wrap { max-width: 980px; }
+
+    .comercial-header {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      background-image: url('ImagenEmpresa.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: cover;
+      background-color: #eef3f8;
+      min-height: 140px;
+      padding: 0.85rem 0.9rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .comercial-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.55) 40%, rgba(255,255,255,.92) 65%, #fff 80%);
+      pointer-events: none;
+    }
+    .comercial-header .title-wrap {
+      position: relative;
+      z-index: 1;
+      margin-left: auto;
+      max-width: 62%;
+      min-width: 280px;
+      padding: 0.95rem 1.15rem 1rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(13,71,161,.12);
+      border-left: 5px solid #0d47a1;
+      box-shadow: 0 6px 20px rgba(0,33,113,.12);
+    }
+    .comercial-header h1 {
+      font-family: var(--font-display);
+      margin: 0;
+      line-height: 1.28;
+      color: #061433;
+    }
+    .comercial-header .eyebrow {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0d47a1;
+      margin-bottom: 0.35rem;
+    }
+    .comercial-header .headline {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .comercial-header .subhead {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1565c0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .intro {
+      margin: 0 0 1.5rem;
+      max-width: 92%;
+    }
+    .intro h2 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      margin: 0 0 0.6rem;
+    }
+    .intro p {
+      margin: 0;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid #0d47a1;
+      border-radius: 12px;
+      padding: 0.95rem 1rem;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .pillar.acceso { border-top-color: #0d47a1; }
+    .pillar.cuentas { border-top-color: #00838f; }
+    .pillar.menus { border-top-color: #2e7d32; }
+    .pillar h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin: 0 0 0.35rem;
+      color: var(--primary-dark);
+    }
+    .pillar p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 0 0 1.35rem;
+    }
+    .benefit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.95rem 1.05rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .benefit h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.4rem;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .benefit p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .badge {
+      font-family: var(--font-display);
+      display: inline-block;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .badge-disponible {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+    }
+
+    .figure.figure-esquema img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    .cta-list {
+      margin: 0.75rem 0 0.25rem;
+      padding-left: 1.2rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .cta-list li { margin-bottom: 0.4rem; }
+    .cta-list strong {
+      font-family: var(--font-display);
+      color: var(--primary-dark);
+    }
+
+    .slide-block {
+      margin-bottom: 1.6rem;
+      padding: 1.2rem 1.35rem;
+      background: #fafafa;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+    }
+    .slide-block.teal { border-left-color: #00838f; }
+    .slide-block.green { border-left-color: #2e7d32; }
+    .slide-block h3 {
+      font-family: var(--font-display);
+      margin: 0 0 0.7rem;
+      color: var(--primary-dark);
+      font-size: 1.18rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .slide-block h3 .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    .slide-block.teal h3 .num { background: #00838f; }
+    .slide-block.green h3 .num { background: #2e7d32; }
+    .slide-block > p {
+      margin: 0 0 0.85rem;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      margin: 0.75rem 0 1rem;
+    }
+    .feature {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .feature strong {
+      font-family: var(--font-display);
+      display: block;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .feature span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .figure {
+      margin: 1rem 0 0.35rem;
+      text-align: center;
+    }
+    .figure img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      background: #fff;
+      display: inline-block;
+    }
+    .figure .caption {
+      margin-top: 0.55rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-top: 0.85rem;
+    }
+    .shot {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+      object-position: top center;
+      background: #f5f7fa;
+    }
+    .shot figcaption {
+      padding: 0.55rem 0.75rem;
+      font-size: 0.86rem;
+      color: var(--text);
+      border-top: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .message-box {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+      border: 1px solid rgba(13,71,161,.25);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .message-box strong {
+      font-family: var(--font-display);
+    }
+
+    .chain {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      margin: 0.85rem 0 0;
+      justify-content: center;
+    }
+    .chain .chip {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: #e3f2fd;
+      color: #0d47a1;
+      border: 1px solid #90caf9;
+    }
+    .chain .arrow { color: #90a4ae; font-weight: 700; }
+
+    .security-box {
+      margin: 1rem 0 0.25rem;
+      padding: 1rem 1.15rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      border-left: 4px solid #0d47a1;
+      box-shadow: var(--shadow-sm);
+    }
+    .security-box h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.55rem;
+      font-size: 1.02rem;
+      color: var(--primary-dark);
+    }
+    .security-box > p {
+      margin: 0 0 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-align: justify;
+      line-height: 1.55;
+    }
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+    }
+    .security-item {
+      background: #f5f8fc;
+      border-radius: 8px;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid #e3eaf3;
+    }
+    .security-item strong {
+      font-family: var(--font-display);
+      display: block;
+      font-size: 0.92rem;
+      color: #0d47a1;
+      margin-bottom: 0.2rem;
+    }
+    .security-item.wide {
+      grid-column: 1 / -1;
+    }
+    .security-item span {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+    @media (max-width: 800px) {
+      .pillars, .feature-grid, .shot-grid, .security-grid, .benefits { grid-template-columns: 1fr; }
+      .comercial-header .title-wrap { max-width: 100%; }
+      .comercial-header::before { background: rgba(255,255,255,.9); }
+      .shot img { max-height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-wrap">
+    <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+
+    <header class="comercial-header">
+      <div class="title-wrap">
+        <h1>
+          <span class="eyebrow">Capacidad disponible</span>
+          <span class="headline">Administración y gestión de usuarios</span>
+          <span class="subhead">Acceso, cuentas, roles, perfiles y menús</span>
+        </h1>
+      </div>
+    </header>
+
+    <div class="intro">
+      <span class="badge badge-disponible">Disponible</span>
+      <h2>Identidad y seguridad funcional del Portal</h2>
+      <p>
+        Esta capacidad concentra el acceso seguro de los usuarios y la administración
+        de quién puede operar cada área del Portal. Combina la experiencia de ingreso,
+        el ciclo de vida de las cuentas y la configuración dinámica de menús según
+        roles y perfiles — sin depender de redespliegues para ajustar la navegación.
+        Es una pieza transversal: sostiene clientes, fuerza de ventas, prestadores
+        y personal interno sobre el mismo modelo de identidad.
+      </p>
+      <p style="margin-top: 0.75rem;">
+        Está lista para integrarse al Portal unificado en la Fase 1: no es un mockup
+        ni un plan a futuro, sino una capacidad operativa construida sobre el runtime
+        de Formas Configurables y prácticas de seguridad empresarial.
+      </p>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">
+        <h4>Un solo ingreso</h4>
+        <p>Autenticación unificada con sesión controlada y menú según el rol operativo.</p>
+      </div>
+      <div class="benefit">
+        <h4>Gobierno de cuentas</h4>
+        <p>Alta, credenciales, roles, perfiles y estatus desde una consola central.</p>
+      </div>
+      <div class="benefit">
+        <h4>Navegación por configuración</h4>
+        <p>Menús multinivel asociados a perfiles, con visibilidad fina y sin redeploy.</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar acceso">
+        <h3>Acceso e identidad</h3>
+        <p>Login, selección de rol, sesión controlada y autogestión del usuario</p>
+      </div>
+      <div class="pillar cuentas">
+        <h3>Administración de cuentas</h3>
+        <p>Alta, credenciales, roles, perfiles, estatus y eliminación</p>
+      </div>
+      <div class="pillar menus">
+        <h3>Menús dinámicos</h3>
+        <p>Estructura, asociación a perfiles y visibilidad por opción</p>
+      </div>
+    </div>
+
+    <figure class="figure figure-esquema">
+      <img src="assets/esquemas/usuarios-tres-pilares.png" alt="Tres pilares: acceso e identidad, administración de cuentas y menús dinámicos">
+      <figcaption class="caption">Tres pilares de la capacidad: acceso, cuentas y menús</figcaption>
+    </figure>
+
+    <div class="card">
+      <div class="card-body">
+
+        <!-- 1 Acceso -->
+        <section class="slide-block">
+          <h3><span class="num">1</span> Acceso e identidad</h3>
+          <p>
+            Un solo punto de entrada para clientes, fuerza de ventas, prestadores
+            y personal interno. Tras autenticarse, el usuario selecciona el rol
+            operativo (si tiene varios) y recibe el menú correspondiente.
+            La sesión se sostiene de forma controlada entre las aplicaciones del
+            Portal, con extensión y cierre automático según la política de seguridad.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Inicio de sesión</strong>
+              <span>Credenciales de acceso y entrada al Portal.</span>
+            </div>
+            <div class="feature">
+              <strong>Selección de rol</strong>
+              <span>Cuando el usuario opera con más de un rol, elige el contexto de trabajo.</span>
+            </div>
+            <div class="feature">
+              <strong>Menú personalizado</strong>
+              <span>Opciones visibles según el rol de la sesión.</span>
+            </div>
+            <div class="feature">
+              <strong>Control de sesión</strong>
+              <span>Aviso de vencimiento, extensión de sesión y cierre automático al expirar.</span>
+            </div>
+            <div class="feature">
+              <strong>Registro de usuario</strong>
+              <span>Alta con datos de identificación y confirmación.</span>
+            </div>
+            <div class="feature">
+              <strong>Recuperación de acceso</strong>
+              <span>Olvido de contraseña con verificación por preguntas de seguridad.</span>
+            </div>
+          </div>
+
+          <div class="security-box">
+            <h4>Características de seguridad del acceso</h4>
+            <p>
+              La autenticación y el control de sesión están diseñados para un entorno
+              multiaplicación: un ingreso válido sostiene la seguridad entre los
+              módulos del Portal y protege la vigencia de la sesión.
+            </p>
+            <div class="security-grid">
+              <div class="security-item wide">
+                <strong>Autenticación con Spring Security + JWT</strong>
+                <span>
+                  Las credenciales se validan en el backend con Spring Security y se genera un Token JWT
+                  que sostiene la sesión de forma controlada. El enfoque aplica buenas prácticas de seguridad
+                  empresarial para reducir la exposición a ataques frecuentes: fuerza bruta y reutilización
+                  de credenciales, secuestro o fijación de sesión, acceso no autorizado entre módulos,
+                  reutilización de sesiones vencidas y falsificación de peticiones entre sitios (CSRF),
+                  además de reforzar la integridad del acceso frente a intentos de elevación de privilegios.
+                </span>
+              </div>
+              <div class="security-item">
+                <strong>Propagación del token entre aplicaciones</strong>
+                <span>Tras el ingreso, las aplicaciones invocadas mantienen la seguridad mediante la propagación del JWT.</span>
+              </div>
+              <div class="security-item">
+                <strong>Vigencia de sesión parametrizable</strong>
+                <span>La duración de la sesión queda definida en el token, según política de Spring Security.</span>
+              </div>
+              <div class="security-item">
+                <strong>Extensión automática de sesión</strong>
+                <span>Antes del vencimiento (aviso ~45 s), el usuario puede extender la sesión y renovar el token.</span>
+              </div>
+              <div class="security-item">
+                <strong>Logout automático al expirar</strong>
+                <span>Si la sesión vence, se cierra el acceso y se solicita un nuevo ingreso.</span>
+              </div>
+              <div class="security-item">
+                <strong>Contexto de seguridad por rol</strong>
+                <span>
+                  El rol elegido (o el único rol del usuario) define el menú visible y, además,
+                  los privilegios disponibles dentro del marco de ejecución de las aplicaciones
+                  invocadas tras el ingreso.
+                </span>
+              </div>
+              <div class="security-item">
+                <strong>Recuperación con preguntas de seguridad</strong>
+                <span>Olvido o bloqueo de contraseña: identificación del usuario, verificación y despacho de correo de recuperación.</span>
+              </div>
+              <div class="security-item">
+                <strong>Desbloqueo de cuenta</strong>
+                <span>Flujo para restablecer el acceso cuando la cuenta ha quedado bloqueada.</span>
+              </div>
+            </div>
+          </div>
+
+          <figure class="figure">
+            <img src="assets/collages/acceso-login-rol.png" alt="Inicio de sesión y selección de rol">
+            <figcaption class="caption">Inicio de sesión y selección de rol cuando el usuario tiene varios perfiles operativos</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="assets/collages/acceso-menu-post.png" alt="Menú y bienvenida tras el ingreso">
+            <figcaption class="caption">Experiencia post-ingreso: menú y bienvenida según el rol de la sesión</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="assets/collages/autogestion-registro-olvido.png" alt="Registro de usuario y recuperación de contraseña">
+            <figcaption class="caption">Autogestión: registro y recuperación de acceso</figcaption>
+          </figure>
+
+          <div class="shot-grid">
+            <figure class="shot">
+              <img src="assets/app-profile/09-extender-sesion.png" alt="Extender sesión">
+              <figcaption>Aviso para extender la sesión antes del vencimiento</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="assets/app-profile/10-sesion-expirada.png" alt="Sesión expirada">
+              <figcaption>Cierre controlado cuando la sesión ha expirado</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 2 Admin usuarios -->
+        <section class="slide-block teal">
+          <h3><span class="num">2</span> Administración de usuarios</h3>
+          <p>
+            Consola para gestionar el ciclo de vida de las cuentas: consulta,
+            alta, credenciales, asignación de roles y perfiles, suspensión/activación
+            y eliminación con confirmación. El administrador opera desde una vista
+            maestro sin depender de intervenciones técnicas para cada cambio de acceso.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Consola maestro</strong>
+              <span>Búsqueda, listado y menú de acciones por usuario.</span>
+            </div>
+            <div class="feature">
+              <strong>Alta de usuarios</strong>
+              <span>Creación de cuentas con activación por correo.</span>
+            </div>
+            <div class="feature">
+              <strong>Gestión de clave</strong>
+              <span>Reglas de complejidad, cambio forzado y clave por defecto.</span>
+            </div>
+            <div class="feature">
+              <strong>Roles</strong>
+              <span>Asociar o quitar roles que definen el contexto operativo.</span>
+            </div>
+            <div class="feature">
+              <strong>Perfiles (grupos)</strong>
+              <span>Asignación de perfiles por rol, con vista previa de menús.</span>
+            </div>
+            <div class="feature">
+              <strong>Estatus y baja</strong>
+              <span>Activar, suspender o eliminar cuentas con confirmación.</span>
+            </div>
+          </div>
+
+          <figure class="figure">
+            <img src="assets/collages/admin-usuarios-consola.png" alt="Consola de administración de usuarios">
+            <figcaption class="caption">Consola maestro: búsqueda, listado y acciones por usuario</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="assets/collages/admin-usuarios-roles-perfiles.png" alt="Administrar roles y perfiles">
+            <figcaption class="caption">Asignación de roles y perfiles (grupos) al usuario</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="assets/collages/admin-usuarios-alta-clave.png" alt="Alta de usuario y cambio de clave">
+            <figcaption class="caption">Alta de cuentas y gestión de credenciales</figcaption>
+          </figure>
+
+          <div class="shot-grid">
+            <figure class="shot">
+              <img src="assets/admin-users/06d-estatus-activo.png" alt="Usuario activo">
+              <figcaption>Estatus Activo visible en la consola</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="assets/admin-users/07-eliminar-usuario-confirmacion.png" alt="Eliminar usuario">
+              <figcaption>Eliminación de usuario con confirmación explícita</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 3 Admin menús -->
+        <section class="slide-block green">
+          <h3><span class="num">3</span> Administración de menús</h3>
+          <p>
+            Define qué opciones ve cada perfil. La estructura de menús se configura
+            de forma dinámica y se asocia a roles y perfiles, permitiendo evolucionar
+            la navegación del Portal sin redesplegar la aplicación: nuevos dominios
+            o cambios de privilegio se reflejan por configuración.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Consola dual</strong>
+              <span>Panel de menús y panel de roles/perfiles en una misma vista.</span>
+            </div>
+            <div class="feature">
+              <strong>Árbol multinivel</strong>
+              <span>Crear, editar, clonar y organizar opciones por niveles.</span>
+            </div>
+            <div class="feature">
+              <strong>Perfiles bajo roles</strong>
+              <span>Definición de grupos/perfiles asociados a cada rol.</span>
+            </div>
+            <div class="feature">
+              <strong>Asociación menú ↔ perfil</strong>
+              <span>Asignación de menús a perfiles (p. ej. por arrastre).</span>
+            </div>
+            <div class="feature">
+              <strong>Visibilidad por ítem</strong>
+              <span>Mostrar u ocultar opciones individuales sin borrar el menú maestro.</span>
+            </div>
+            <div class="feature">
+              <strong>Suspender / Activar</strong>
+              <span>Control temporal de menús completos por perfil.</span>
+            </div>
+          </div>
+
+          <figure class="figure">
+            <img src="assets/collages/admin-menus-consola.png" alt="Consola de administración de menús">
+            <figcaption class="caption">Consola dual: menús y roles/perfiles</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="assets/collages/admin-menus-estructura.png" alt="Árbol de menús y asociación a perfil">
+            <figcaption class="caption">Estructura del menú y asociación a perfiles</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="assets/collages/admin-menus-visibilidad.png" alt="Visibilidad por ítem y menú suspendido">
+            <figcaption class="caption">Control fino de visibilidad y suspensión de menús</figcaption>
+          </figure>
+        </section>
+
+        <!-- Valor integrado -->
+        <section class="slide-block" style="border-left-color: #ef6c00;">
+          <h3><span class="num" style="background:#ef6c00;">4</span> Cómo se articulan las tres piezas</h3>
+          <p>
+            La administración de usuarios define <em>quién</em> entra y con qué rol/perfil;
+            la administración de menús define <em>qué</em> opciones ve cada perfil;
+            el acceso e identidad aplica esa configuración en la experiencia diaria.
+            El resultado es una cadena de autorización clara y auditable:
+          </p>
+
+          <figure class="figure figure-esquema">
+            <img src="assets/esquemas/usuarios-cadena-autorizacion.png" alt="Cadena Usuario, Rol, Perfil, Menú y Experiencia en el Portal">
+            <figcaption class="caption">Cadena de autorización: de la identidad a la experiencia en el Portal</figcaption>
+          </figure>
+
+          <ul class="cta-list">
+            <li><strong>Usuario:</strong> cuenta e identidad con las que se ingresa al Portal.</li>
+            <li><strong>Rol:</strong> contexto operativo (cliente, productor, prestador, interno, etc.).</li>
+            <li><strong>Perfil:</strong> agrupación de privilegios asociada al rol.</li>
+            <li><strong>Menú:</strong> opciones visibles y navegables para ese perfil.</li>
+            <li><strong>Experiencia:</strong> lo que el usuario ve y puede hacer en el Portal unificado.</li>
+          </ul>
+
+          <figure class="figure">
+            <img src="assets/collages/cadena-usuario-rol-menu.png" alt="Collage: usuarios, roles/perfiles y menús">
+            <figcaption class="caption">En la práctica: identidad, autorización y navegación sobre pantallas reales</figcaption>
+          </figure>
+
+          <div class="message-box">
+            <strong>Valor para el Portal:</strong> control centralizado de acceso y seguridad funcional,
+            experiencia diferenciada por tipo de usuario, y evolución de menús por configuración —
+            alineado con el modelo de Formas Configurables y con las capacidades ya disponibles
+            para la Fase 1 del nuevo Portal.
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <p style="margin: 1rem 0 2rem; text-align: center;">
+      <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+    </p>
+  </div>
+</body>
+</html>
