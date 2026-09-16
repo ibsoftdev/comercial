@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevo Portal de Seguros Online · Formas Configurables</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos-demo.css">
+  <style>
+    :root {
+      --font-display: "Outfit", "Segoe UI", sans-serif;
+      --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+      --text-desc: #2f3540;
+      --size-desc: 1.05rem;
+      --leading-desc: 1.7;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text-desc);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .app-wrap {
+      max-width: 960px;
+      overflow: visible;
+    }
+    .card,
+    .card-body {
+      overflow: visible;
+    }
+
+    .comercial-header {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: nowrap;
+      background-image: url('ImagenEmpresa.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: cover;
+      background-color: #eef3f8;
+      min-height: 148px;
+      padding: 0.85rem 0.9rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .comercial-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.5) 40%,
+        rgba(255, 255, 255, 0.9) 62%,
+        #ffffff 78%
+      );
+      pointer-events: none;
+    }
+    .comercial-header .title-wrap {
+      position: relative;
+      z-index: 1;
+      margin-left: auto;
+      max-width: 58%;
+      min-width: 280px;
+      text-align: left;
+      padding: 0.95rem 1.15rem 1rem;
+      color: #0a1f4d;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid rgba(13, 71, 161, 0.12);
+      border-left: 5px solid #0d47a1;
+      box-shadow: 0 6px 20px rgba(0, 33, 113, 0.12);
+    }
+    .comercial-header .title-wrap h1 {
+      font-family: var(--font-display);
+      color: #0a1f4d;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.28;
+      margin: 0;
+    }
+    .comercial-header .title-wrap h1 .header-line-1 {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      color: #0d47a1;
+    }
+    .comercial-header .title-wrap h1 .header-line-2 {
+      display: block;
+      font-size: 1.42rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+      color: #061433;
+    }
+    .comercial-header .title-wrap h1 .header-line-3 {
+      display: block;
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #1565c0;
+    }
+    .comercial-header .title-wrap .header-tagline {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      margin-top: 0.55rem;
+      margin-bottom: 0;
+      font-weight: 500;
+      color: #475569;
+      letter-spacing: 0.01em;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(13, 71, 161, 0.15);
+    }
+
+    .intro-propuesta {
+      max-width: calc(100% - 1cm - 1.5rem - 1cm);
+      margin: 0 0 1.5rem 1cm;
+    }
+    .intro-propuesta h2 {
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--primary-dark);
+      margin: 0 0 0.75rem 0;
+    }
+    .intro-propuesta p {
+      text-align: justify;
+      color: var(--text-desc);
+      font-size: var(--size-desc);
+      line-height: var(--leading-desc);
+      font-weight: 400;
+      margin: 0 0 0.85rem;
+    }
+    .intro-propuesta p:last-child { margin-bottom: 0; }
+    .intro-propuesta .slogan {
+      margin-top: 1rem;
+      margin-bottom: 0;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #0d47a1;
+      line-height: 1.4;
+    }
+
+    .slide-block {
+      margin-bottom: 1.75rem;
+      padding: 1.25rem 1.4rem;
+      background: #fafafa;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+    }
+    .slide-block h3 {
+      font-family: var(--font-display);
+      margin: 0 0 0.75rem 0;
+      color: var(--primary-dark);
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .slide-block h3 .num {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .slide-block p {
+      margin: 0 0 0.9rem 0;
+      color: var(--text-desc);
+      font-size: var(--size-desc);
+      line-height: var(--leading-desc);
+      font-weight: 400;
+      text-align: justify;
+    }
+    .slide-block p:last-child { margin-bottom: 0; }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin: 0.85rem 0 0;
+    }
+    .portal-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.8rem 0.95rem;
+      font-size: 0.95rem;
+      color: var(--text-desc);
+      line-height: 1.45;
+      font-weight: 400;
+      box-shadow: var(--shadow-sm);
+    }
+    .portal-item strong {
+      font-family: var(--font-display);
+      display: block;
+      color: var(--primary-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* Punto 1 — esquema de públicos y capacidades */
+    .audiencias {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0 1.15rem;
+    }
+    .audiencia {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.95rem 0.9rem 1rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--primary);
+      text-align: center;
+    }
+    .audiencia.clientes { border-top-color: #0d47a1; }
+    .audiencia.ventas { border-top-color: #00838f; }
+    .audiencia.prestadores { border-top-color: #2e7d32; }
+    .audiencia.interno { border-top-color: #ef6c00; }
+    .audiencia .icono {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 0.65rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .audiencia.clientes .icono { background: #e3f2fd; color: #0d47a1; }
+    .audiencia.ventas .icono { background: #e0f2f1; color: #00695c; }
+    .audiencia.prestadores .icono { background: #e8f5e9; color: #1b5e20; }
+    .audiencia.interno .icono { background: #fff3e0; color: #e65100; }
+    .audiencia .icono svg { width: 24px; height: 24px; fill: currentColor; }
+    .audiencia h4 {
+      font-family: var(--font-display);
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin: 0 0 0.3rem;
+      color: var(--primary-dark);
+      letter-spacing: -0.01em;
+    }
+    .audiencia p {
+      margin: 0 !important;
+      font-size: 0.92rem !important;
+      line-height: 1.45 !important;
+      text-align: center !important;
+      color: var(--text-muted) !important;
+      font-weight: 400 !important;
+    }
+    .capacidades-label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin: 0.35rem 0 0.65rem;
+    }
+    .capacidades-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+    }
+    .capacidad {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.7rem 0.85rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.15s ease;
+    }
+    .capacidad:hover { border-color: #90caf9; }
+    .capacidad .nro {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0d47a1, #1565c0);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.05rem;
+    }
+    .capacidad .txt {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--text-desc);
+      padding-top: 0.2rem;
+      font-weight: 400;
+    }
+    @media (max-width: 900px) {
+      .audiencias { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .audiencias { grid-template-columns: 1fr; }
+      .capacidades-grid { grid-template-columns: 1fr; }
+    }
+
+    .figure {
+      margin: 1rem 0 0.25rem;
+      text-align: center;
+    }
+    .figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+    .figure.figure-hero img {
+      width: 100%;
+      max-width: 100%;
+    }
+    /* Despliegue: 95% del ancho de columna (+5% sobre el 90%), centrada */
+    .figure.figure-xl {
+      width: 95%;
+      max-width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .figure.figure-xl img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+    /* Configuración JSON: ~104% del ancho de columna, centrada */
+    .figure.figure-config {
+      width: 104%;
+      max-width: 104%;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .figure.figure-config img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+    .figure .caption {
+      font-family: var(--font-body);
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.45;
+      letter-spacing: 0.01em;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+    }
+    .benefit {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 0.95rem 1.05rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .benefit h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.4rem 0;
+      color: var(--primary-dark);
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .benefit p {
+      margin: 0;
+      font-size: 0.98rem;
+      text-align: left;
+      color: var(--text-desc);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .badge {
+      font-family: var(--font-display);
+      display: inline-block;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .badge-disponible {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+    }
+    .badge-construir {
+      background: #e3f2fd;
+      color: #0d47a1;
+      border: 1px solid #90caf9;
+    }
+
+    /* Mapa de cobertura — layout comercial */
+    .coverage-summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      margin: 0.85rem 0 1rem;
+      padding: 0.95rem 1.15rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .coverage-summary .bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .coverage-summary .bar-label {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .coverage-summary .bar {
+      display: flex;
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e3f2fd;
+    }
+    .coverage-summary .bar .done {
+      width: 40%;
+      background: linear-gradient(90deg, #2e7d32, #66bb6a);
+    }
+    .coverage-summary .bar .todo {
+      flex: 1;
+      background: #90caf9;
+    }
+    .coverage-summary .counts {
+      display: flex;
+      gap: 0.85rem;
+      flex-shrink: 0;
+    }
+    .coverage-summary .count {
+      text-align: center;
+      min-width: 72px;
+    }
+    .coverage-summary .count .n {
+      font-family: var(--font-display);
+      display: block;
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .coverage-summary .count .l {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+    .coverage-summary .count.ok .n { color: #1b5e20; }
+    .coverage-summary .count.build .n { color: #0d47a1; }
+
+    .coverage-map {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-top: 0.35rem;
+    }
+    .coverage-col {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .coverage-col .col-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 0.95rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .coverage-col.disponible .col-head {
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+    }
+    .coverage-col.construir .col-head {
+      background: linear-gradient(135deg, #e3f2fd 0%, #e8eaf6 100%);
+    }
+    .coverage-col .col-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0;
+    }
+    .coverage-col .col-sub {
+      margin: 0.15rem 0 0;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+    .coverage-list {
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 0.65rem 0.65rem;
+    }
+    .coverage-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.55rem 0.55rem;
+      border-radius: 8px;
+      margin-bottom: 0.2rem;
+    }
+    .coverage-list li:last-child { margin-bottom: 0; }
+    .coverage-col.disponible .coverage-list li { background: #f7fbf7; }
+    .coverage-col.construir .coverage-list li { background: #f7f9fc; }
+    .coverage-list .mark {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    .coverage-col.disponible .mark {
+      background: #c8e6c9;
+      color: #1b5e20;
+    }
+    .coverage-col.construir .mark {
+      background: #bbdefb;
+      color: #0d47a1;
+    }
+    .coverage-list .item { flex: 1; min-width: 0; }
+    .coverage-list .item-title {
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: var(--text-desc);
+      font-weight: 400;
+    }
+    .coverage-list .item-link {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    .coverage-list .item-link:hover { text-decoration: underline; }
+
+    @media (max-width: 800px) {
+      .coverage-map { grid-template-columns: 1fr; }
+      .coverage-summary { grid-template-columns: 1fr; }
+      .coverage-summary .counts { justify-content: flex-start; }
+    }
+
+    .comparativa {
+      margin-top: 1.25rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .comparativa-intro {
+      padding: 0.95rem 1.15rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      background: #f7f9fc;
+    }
+    .comparativa-intro h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.3rem;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.01em;
+    }
+    .comparativa-intro p {
+      margin: 0 !important;
+      text-align: left !important;
+      font-size: 0.95rem !important;
+      line-height: 1.5 !important;
+      color: var(--text-muted) !important;
+    }
+    .comparativa-head {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 0.55rem;
+      padding: 0.65rem 1rem 0.55rem;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .comparativa-head .h-trad { color: #b71c1c; }
+    .comparativa-head .h-fc { color: #1b5e20; }
+    .comparativa-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 0.55rem;
+      padding: 0.55rem 1rem;
+      align-items: stretch;
+      border-top: 1px solid #eef2f6;
+    }
+    .comparativa-row .aspect {
+      display: flex;
+      align-items: center;
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      line-height: 1.35;
+      padding-right: 0.25rem;
+    }
+    .comparativa-row .cell {
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .comparativa-row .cell.trad {
+      background: #fff5f5;
+      color: #b71c1c;
+      border: 1px solid #ffcdd2;
+    }
+    .comparativa-row .cell.fc {
+      background: #f1f8f2;
+      color: #1b5e20;
+      border: 1px solid #c8e6c9;
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .comparativa-head { display: none; }
+      .comparativa-row {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+        padding: 0.75rem 0.9rem;
+      }
+      .comparativa-row .aspect { margin-bottom: 0.15rem; }
+      .comparativa-row .cell.trad::before {
+        content: "Tradicional · ";
+        font-weight: 700;
+        opacity: 0.75;
+      }
+      .comparativa-row .cell.fc::before {
+        content: "Formas Configurables · ";
+        font-weight: 700;
+        opacity: 0.75;
+      }
+    }
+
+    .message-box {
+      margin-top: 1rem;
+      padding: 1.05rem 1.25rem;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+      border: 1px solid rgba(13, 71, 161, 0.25);
+      font-size: var(--size-desc);
+      line-height: var(--leading-desc);
+      font-weight: 400;
+      color: var(--text-desc);
+    }
+    .message-box strong {
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    .cta-list {
+      margin: 0.75rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--text-desc);
+      line-height: 1.75;
+      font-size: var(--size-desc);
+      font-weight: 400;
+    }
+    .cta-list li { margin-bottom: 0.4rem; }
+    .cta-list strong {
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+    .card-header {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+    }
+
+    @media (max-width: 700px) {
+      .comercial-header {
+        flex-wrap: wrap;
+        background-position: top left;
+        min-height: auto;
+      }
+      .comercial-header::before {
+        background: rgba(255, 255, 255, 0.88);
+      }
+      .comercial-header .title-wrap {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+        text-align: left;
+      }
+      .comercial-header .title-wrap h1 .header-line-2 { font-size: 1.22rem; }
+      .intro-propuesta { margin-left: 0; max-width: 100%; }
+    }
+
+    @media print {
+      body { font-size: 12pt; }
+      .comercial-header .title-wrap h1 .header-line-2 { font-size: 16pt; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-wrap">
+    <header class="comercial-header">
+      <div class="title-wrap">
+        <h1>
+          <span class="header-line-1">Nuevo Portal de Seguros Online</span>
+          <span class="header-line-2">Modernizar sin reinventar</span>
+          <span class="header-line-3">Construcción con Formas Configurables</span>
+        </h1>
+        <p class="header-tagline">Integrar lo disponible · Evolucionar con agilidad - Reducción de Costos</p>
+      </div>
+    </header>
+
+    <div class="intro intro-propuesta">
+      <h2>Propuesta comercial</h2>
+      <p>
+        Modernizar el Portal de Seguros Online ya no tiene que ser un proyecto
+        eterno ni una apuesta a reescribirlo todo. Hoy podemos partir de
+        <strong>capacidades reales ya construidas</strong> — administración y seguridad,
+        cotización y emisión, órdenes médicas, notificaciones y mensajes, consultas varias —
+        e integrarlas en una experiencia unificada para clientes, fuerza de ventas,
+        prestadores y personal interno.
+      </p>
+      <p>
+        Lo que falta se completa con el mismo modelo de
+        <strong>Formas Configurables</strong>: pantallas y flujos definidos por
+        configuración, reutilizables entre dominios y listos para evolucionar
+        con el negocio. No es un big-bang. Es <strong>ensamblar lo disponible</strong>
+        y <strong>completar lo restante</strong>, con entregables visibles desde
+        la primera fase y sin abandonar la lógica que la compañía ya conoce.
+      </p>
+      <p>
+        El resultado es un Portal moderno, coherente y preparado para crecer:
+        menos fricción para el usuario, más velocidad para el negocio y una
+        base sólida para seguir sumando capacidades — siniestros, cartera,
+        requerimientos, documentos y más — cuando haga falta.
+      </p>
+      <p class="slogan">Nunca antes fue más fácil modernizar el Portal.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+
+        <!-- 1 Funcionalidades del Portal -->
+        <section class="slide-block">
+          <h3><span class="num">1</span> Funcionalidades de un Portal de Seguros</h3>
+          <p>
+            Un Portal de Seguros Online centraliza la atención digital a cuatro públicos clave.
+            Sobre esa base se articulan las capacidades que el negocio necesita operar día a día.
+          </p>
+
+          <div class="audiencias">
+            <div class="audiencia clientes">
+              <div class="icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+              </div>
+              <h4>Clientes</h4>
+              <p>Consulta, autogestión y seguimiento de su relación con la aseguradora</p>
+            </div>
+            <div class="audiencia ventas">
+              <div class="icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zM8 11c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.3 0-7 1.2-7 3.5V19h8.1c-.1-.3-.1-.7-.1-1 0-1.5.6-2.8 1.5-3.8C9.5 13.1 8.7 13 8 13zm8 0c-.3 0-.6 0-.9.1.9 1 1.4 2.3 1.4 3.9 0 .3 0 .7-.1 1H23v-2.5c0-2.3-4.7-3.5-7-3.5z"/></svg>
+              </div>
+              <h4>Fuerza de ventas</h4>
+              <p>Productores: cotización, emisión y acompañamiento comercial</p>
+            </div>
+            <div class="audiencia prestadores">
+              <div class="icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+              </div>
+              <h4>Prestadores de servicios</h4>
+              <p>Clínicas, talleres, funerarias, grúas, etc.</p>
+            </div>
+            <div class="audiencia interno">
+              <div class="icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+              </div>
+              <h4>Personal interno</h4>
+              <p>Empleados de la compañía: Comercial, Siniestros, Operaciones, Finanzas, etc.</p>
+            </div>
+          </div>
+
+          <div class="capacidades-label">Capacidades del Portal</div>
+          <div class="capacidades-grid">
+            <div class="capacidad"><span class="nro">01</span><span class="txt">Gestión de usuarios, roles y perfiles</span></div>
+            <div class="capacidad"><span class="nro">02</span><span class="txt">Cotización y emisión Auto / Personas</span></div>
+            <div class="capacidad"><span class="nro">03</span><span class="txt">Gestión de órdenes médicas</span></div>
+            <div class="capacidad"><span class="nro">04</span><span class="txt">Notificaciones y mensajes (correos, SMS, RRSS)</span></div>
+            <div class="capacidad"><span class="nro">05</span><span class="txt">Notificación de siniestros Auto</span></div>
+            <div class="capacidad"><span class="nro">06</span><span class="txt">Notificación de siniestros Personas</span></div>
+            <div class="capacidad"><span class="nro">07</span><span class="txt">Consultas de cartera (clientes, pólizas, recibos, etc.)</span></div>
+            <div class="capacidad"><span class="nro">08</span><span class="txt">Gestión de requerimientos (workflow)</span></div>
+            <div class="capacidad"><span class="nro">09</span><span class="txt">Gestión de documentos</span></div>
+            <div class="capacidad"><span class="nro">10</span><span class="txt">Otras funcionalidades menores</span></div>
+          </div>
+
+          <p style="margin-top: 1rem; margin-bottom: 0;">
+            La propuesta: construir este Portal sobre una plataforma moderna,
+            reutilizando capacidades ya disponibles y completando el resto con Formas Configurables,
+            para ganar velocidad de entrega y facilitar la evolución del negocio.
+          </p>
+        </section>
+
+        <!-- 2 La propuesta -->
+        <section class="slide-block">
+          <h3><span class="num">2</span> La propuesta en una imagen</h3>
+          <p>
+            El nuevo Portal se organiza en tres capas: una experiencia unificada,
+            aplicaciones por dominio de negocio, y un motor compartido de Formas Configurables
+            que acelera la construcción y el mantenimiento. Toda esa arquitectura se apoya en
+            <strong>Spring Boot</strong> y <strong>React</strong>: frameworks maduros, ampliamente
+            adoptados en la industria, con ecosistema sólido, talento disponible y un historial
+            probado en soluciones empresariales de alto volumen. Esa base tecnológica aporta
+            seguridad, escalabilidad y velocidad de evolución — y hace competitiva la plataforma
+            frente a alternativas más rígidas o menos consolidadas.
+          </p>
+          <figure class="figure figure-hero">
+            <img src="assets/portal-tres-capas.png" alt="Arquitectura del Portal en tres capas, soportada por Spring Boot y React">
+            <figcaption class="caption">Arquitectura conceptual del nuevo Portal · soportada por Spring Boot + React</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/propuesta-ensamblaje.png" alt="Del portal actual al nuevo portal con Spring Boot y React">
+            <figcaption class="caption">De lo actual a lo nuevo: ensamblar + completar sobre Spring Boot y React</figcaption>
+          </figure>
+          <p>
+            Esa misma arquitectura se concreta en la práctica: un Portal unificado que integra
+            aplicaciones por dominio sobre una base compartida. Cada dominio aporta su lógica
+            de negocio; el motor común garantiza coherencia y velocidad de construcción.
+          </p>
+          <figure class="figure figure-xl">
+            <img src="assets/punto2-despliegue-integracion.png" alt="Despliegue e integración de aplicaciones en el Portal">
+            <figcaption class="caption">Vista ejecutiva: integración de dominios y despliegue del Portal</figcaption>
+          </figure>
+        </section>
+
+        <!-- 3 Bondades -->
+        <section class="slide-block">
+          <h3><span class="num">3</span> Bondades de construir con Formas Configurables</h3>
+          <p>
+            El alcance de Formas Configurables va más allá de “armar pantallas”: es un modelo
+            para <strong>crear aplicaciones dinámicas de captura y operación</strong> —
+            formularios, wizards, consultas, documentos y flujos por pasos — a partir de
+            una definición configurable, reutilizable entre dominios del Portal
+            (usuarios, cotización y emisión, órdenes médicas, y lo que se complete después).
+          </p>
+          <p>
+            La idea es simple y poderosa: en lugar de programar cada pantalla como un desarrollo
+            aislado, se describe el comportamiento en configuración y un motor compartido —
+            sobre <strong>Spring Boot</strong> y <strong>React</strong> — lo interpreta en tiempo
+            de ejecución. Así se construye de forma <strong>efectiva</strong> (menos código
+            repetido, misma experiencia en todo el Portal) y <strong>ágil</strong> (cambios de
+            negocio vía configuración, sin redesplegar por cada ajuste de campos, textos o pasos).
+          </p>
+          <p>
+            Ese enfoque permite modernizar sin big-bang: integrar lo ya disponible, completar
+            lo faltante con el mismo patrón y evolucionar el Portal con entregables visibles
+            en cada fase — manteniendo coherencia, trazabilidad y velocidad de respuesta al negocio.
+          </p>
+          <div class="benefits">
+            <div class="benefit">
+              <h4>Velocidad de entrega</h4>
+              <p>Nuevos flujos y ajustes de captura sin desarrollar cada pantalla desde cero.</p>
+            </div>
+            <div class="benefit">
+              <h4>Evolución ágil</h4>
+              <p>Cambios de textos, campos y pasos mediante configuración, sin redespliegues continuos.</p>
+            </div>
+            <div class="benefit">
+              <h4>Experiencia coherente</h4>
+              <p>Misma lógica de formularios, consultas y navegación en todo el Portal.</p>
+            </div>
+            <div class="benefit">
+              <h4>Modernización guiada</h4>
+              <p>Las pantallas actuales se pueden documentar y traducir al nuevo modelo de forma sistemática.</p>
+            </div>
+            <div class="benefit">
+              <h4>Plataforma actual</h4>
+              <p>Spring Boot + React: base madura, lista para entornos contenedorizados y evolución continua.</p>
+            </div>
+            <div class="benefit">
+              <h4>Menor riesgo</h4>
+              <p>Reutilizar lo disponible y completar por fases, con entregables visibles en cada etapa.</p>
+            </div>
+          </div>
+
+          <div class="comparativa">
+            <div class="comparativa-intro">
+              <h4>Comparativa de enfoques</h4>
+              <p>
+                Contraste entre construir pantallas y flujos a la manera tradicional
+                y hacerlo con Formas Configurables — en los puntos que más impactan
+                costo, tiempo y mantenimiento.
+              </p>
+            </div>
+            <div class="comparativa-head" aria-hidden="true">
+              <span>Aspecto</span>
+              <span class="h-trad">Enfoque tradicional</span>
+              <span class="h-fc">Formas Configurables</span>
+            </div>
+            <div class="comparativa-row">
+              <div class="aspect">Nueva pantalla o flujo</div>
+              <div class="cell trad">Código específico por pantalla</div>
+              <div class="cell fc">Definición por configuración</div>
+            </div>
+            <div class="comparativa-row">
+              <div class="aspect">Cambio de negocio</div>
+              <div class="cell trad">Modificar y redesplegar</div>
+              <div class="cell fc">Actualizar configuración</div>
+            </div>
+            <div class="comparativa-row">
+              <div class="aspect">Reutilización entre áreas</div>
+              <div class="cell trad">Soluciones aisladas</div>
+              <div class="cell fc">Misma base para todo el Portal</div>
+            </div>
+            <div class="comparativa-row">
+              <div class="aspect">Mantenimiento</div>
+              <div class="cell trad">Alto costo de cambio</div>
+              <div class="cell fc">Evolución controlada y auditable</div>
+            </div>
+          </div>
+
+          <figure class="figure">
+            <img src="assets/despliegue-evolucion-sin-redeploy.png" alt="Evolución sin redesplegar: configuración, publicar cambios, portal actualizado">
+            <figcaption class="caption">Configuración → publicar cambios → Portal actualizado, sin redespliegue continuo</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/subpunto-07-mantenimiento-sencillo.png" alt="Mantenimiento mediante actualización de configuración">
+            <figcaption class="caption">Mantenimiento orientado a configuración, con trazabilidad de cambios</figcaption>
+          </figure>
+        </section>
+
+        <!-- 4 Qué ya existe -->
+        <section class="slide-block">
+          <h3><span class="num">4</span> Qué ya está disponible</h3>
+          <p>
+            “Disponible” aquí no significa un mockup ni un plan a futuro: son
+            <strong>capacidades reales, construidas y operativas</strong>, levantadas con el
+            mismo enfoque de Formas Configurables sobre <strong>Spring Boot</strong> y
+            <strong>React</strong> que ya describimos. Pantallas, flujos, validaciones y
+            reglas de negocio ya corren hoy; no hay que reinventarlas para el nuevo Portal.
+          </p>
+          <p>
+            Eso cambia el punto de partida del proyecto. En lugar de desarrollar desde cero
+            administración de usuarios, cotización y emisión, órdenes médicas o notificaciones,
+            se <strong>integran piezas probadas</strong> al Portal unificado: misma lógica de
+            configuración, misma experiencia de captura y la posibilidad de evolucionarlas
+            sin redesplegar por cada ajuste. Parte significativa del valor de la primera fase
+            ya está hecha; el esfuerzo se concentra en ensamblar, adaptar y completar lo faltante.
+          </p>
+          <p>
+            En la práctica: menor riesgo, menor tiempo hasta el primer entregable visible
+            y coherencia con el modelo que sostendrá el resto de la modernización.
+          </p>
+          <figure class="figure">
+            <img src="assets/capacidades-disponibles.png" alt="Cuatro capacidades disponibles: administración y seguridad, cotización y emisión, órdenes médicas, notificaciones y mensajes">
+            <figcaption class="caption">Capacidades listas para integrar al nuevo Portal</figcaption>
+          </figure>
+          <div class="message-box">
+            <strong>Mensaje clave:</strong> no partimos de cero. Hay piezas reales de negocio
+            listas para incorporarse al nuevo Portal.
+            <br><br>
+            Detalle de Administración y gestión de usuarios:
+            <a href="usuarios/index.html" style="color:#0d47a1; font-weight:700; text-decoration:none;">ver funcionalidades →</a>
+            <br>
+            Detalle de Cotización y emisión:
+            <a href="cotiza_emite/index.html" style="color:#0d47a1; font-weight:700; text-decoration:none;">ver funcionalidades →</a>
+            <br>
+            Detalle de Órdenes médicas:
+            <a href="ordenes_medicas/index.html" style="color:#0d47a1; font-weight:700; text-decoration:none;">ver funcionalidades →</a>
+          </div>
+        </section>
+
+        <!-- 5 Cobertura y construcción -->
+        <section class="slide-block">
+          <h3><span class="num">5</span> Cómo se construye lo que falta</h3>
+          <p>
+            Con lo ya disponible como base, el siguiente paso es ver con claridad
+            <strong>qué se integra de inmediato</strong> y <strong>qué se completa</strong>
+            con el mismo modelo. No es un big-bang: es <strong>ensamblar + construir</strong>
+            lo restante, con un proceso repetible a partir del inventario del Portal actual
+            y de Formas Configurables.
+          </p>
+
+          <div class="coverage-summary">
+            <div class="bar-wrap">
+              <div class="bar-label">Cobertura del Portal · 10 capacidades clave</div>
+              <div class="bar" role="img" aria-label="4 disponibles de 10">
+                <span class="done"></span>
+                <span class="todo"></span>
+              </div>
+            </div>
+            <div class="counts">
+              <div class="count ok">
+                <span class="n">4</span>
+                <span class="l">Disponibles</span>
+              </div>
+              <div class="count build">
+                <span class="n">6</span>
+                <span class="l">Por construir</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="coverage-map">
+            <div class="coverage-col disponible">
+              <div class="col-head">
+                <div>
+                  <p class="col-title">Listas para integrar</p>
+                  <p class="col-sub">Valor inmediato en la primera fase</p>
+                </div>
+                <span class="badge badge-disponible">Disponible</span>
+              </div>
+              <ul class="coverage-list">
+                <li>
+                  <span class="mark" aria-hidden="true">✓</span>
+                  <div class="item">
+                    <div class="item-title">Gestión de usuarios, roles, perfiles y menús</div>
+                    <a class="item-link" href="usuarios/index.html">ver funcionalidades →</a>
+                  </div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">✓</span>
+                  <div class="item">
+                    <div class="item-title">Cotización y emisión Auto / Personas</div>
+                    <a class="item-link" href="cotiza_emite/index.html">ver funcionalidades →</a>
+                  </div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">✓</span>
+                  <div class="item">
+                    <div class="item-title">Gestión de órdenes médicas</div>
+                    <a class="item-link" href="ordenes_medicas/index.html">ver funcionalidades →</a>
+                  </div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">✓</span>
+                  <div class="item">
+                    <div class="item-title">Notificaciones y mensajes (correos, SMS, RRSS)</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="coverage-col construir">
+              <div class="col-head">
+                <div>
+                  <p class="col-title">Se completan con el mismo modelo</p>
+                  <p class="col-sub">Formas Configurables · por fases</p>
+                </div>
+                <span class="badge badge-construir">Por construir</span>
+              </div>
+              <ul class="coverage-list">
+                <li>
+                  <span class="mark" aria-hidden="true">+</span>
+                  <div class="item"><div class="item-title">Notificación de siniestros Auto</div></div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">+</span>
+                  <div class="item"><div class="item-title">Notificación de siniestros Personas</div></div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">+</span>
+                  <div class="item"><div class="item-title">Consultas de cartera (clientes, pólizas, recibos, siniestros, facturas, etc.)</div></div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">+</span>
+                  <div class="item"><div class="item-title">Gestión de requerimientos (solicitud, seguimiento y aprobación)</div></div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">+</span>
+                  <div class="item"><div class="item-title">Gestión de documentos</div></div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">+</span>
+                  <div class="item"><div class="item-title">Otras funcionalidades menores</div></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p style="margin-top: 1.25rem;">
+            Para las capacidades <strong>por construir</strong>, el camino es el mismo en cada dominio:
+            inventariar lo existente, traducir pantallas y flujos a configuración de Formas
+            Configurables, probar e integrar al Portal — de forma manual o acelerada a partir
+            de descripciones e imágenes del Portal actual.
+          </p>
+          <figure class="figure">
+            <img src="assets/proceso-cuatro-pasos.png" alt="Proceso en cuatro pasos: inventario, configuración, prueba e integración">
+            <figcaption class="caption">Proceso de construcción e integración</figcaption>
+          </figure>
+          <p>
+            Un paso clave es <strong>obtener la configuración JSON de Formas Configurables</strong>
+            a partir del material funcional que ya existe. Esa configuración es lo que el motor
+            interpreta para materializar pantallas y flujos — sin reescribir cada pantalla
+            como desarrollo aislado.
+          </p>
+          <p>
+            La configuración puede construirse por distintas vías, según el material disponible:
+            de forma <strong>manual</strong> (definición directa en JSON); a partir de
+            <strong>texto</strong> en lenguaje natural (especificaciones, reglas de negocio
+            o descripciones funcionales); desde <strong>imágenes</strong> de pantallas,
+            wireframes o HTML de referencia; o tomando como base las
+            <strong>pantallas legacy</strong> del Portal actual. En todos los casos el
+            resultado es el mismo: archivos de configuración que Formas Configurables
+            ejecuta como pantallas y flujos listos para integrar al Portal unificado.
+          </p>
+          <figure class="figure figure-config">
+            <img src="assets/punto2-como-construir-configuracion.png" alt="Vías para construir la configuración JSON de Formas Configurables desde manual, texto, imágenes o pantallas legacy">
+            <figcaption class="caption">De documentos, prototipos y pantallas legacy a configuración JSON de Formas Configurables</figcaption>
+          </figure>
+
+          <p style="margin-top: 1.35rem;">
+            Ese proceso se ordena en un <strong>camino de implementación por fases</strong>:
+            entregar valor temprano, reducir el riesgo de migración y dejar en cada etapa
+            un entregable visible para el negocio.
+          </p>
+          <figure class="figure">
+            <img src="assets/fases-implementacion.png" alt="Tres fases de implementación del nuevo Portal">
+            <figcaption class="caption">Fase 1: valor inmediato · Fase 2: ampliación · Fase 3: cierre</figcaption>
+          </figure>
+          <ul class="cta-list">
+            <li><strong>Fase 1 — Valor inmediato:</strong> Portal unificado + capacidades disponibles (usuarios, cotización/emisión, órdenes médicas, notificaciones y mensajes).</li>
+            <li><strong>Fase 2 — Ampliación:</strong> siniestros Auto y Personas, consultas de cartera.</li>
+            <li><strong>Fase 3 — Cierre:</strong> requerimientos, documentos y funcionalidades menores.</li>
+          </ul>
+        </section>
+
+        <!-- 6 Hacia dónde ir -->
+        <section class="slide-block" style="border-left-color: var(--success);">
+          <h3><span class="num" style="background: var(--success);">6</span> Hacia dónde ir</h3>
+          <p>
+            Con Formas Configurables ya es posible ensamblar el Portal reutilizando capacidades
+            y completando lo restante por configuración. El siguiente salto es
+            <strong>automatizar ese ciclo</strong> mediante un <strong>MCP</strong>
+            (<em>Model Context Protocol</em>: una capa de herramientas que permite a
+            <strong>agentes de IA</strong> operar sobre el ciclo de construcción —
+            leer definiciones funcionales, generar y validar configuración, publicar
+            y ejecutar pruebas con evidencia.
+          </p>
+          <p>
+            Esos agentes pueden ejecutarse sobre <strong>LLMs comerciales</strong>
+            (servicios en la nube) o sobre <strong>LLMs locales</strong>
+            (modelos desplegados en infraestructura propia). Para un entorno de seguros,
+            la opción <strong>local es la recomendada</strong>: mayor control sobre datos
+            sensibles, cumplimiento y costos predecibles, sin depender de enviar
+            especificaciones o configuración a proveedores externos.
+          </p>
+          <p>
+            El objetivo es el mismo en ambos casos: pasar de definiciones funcionales
+            en documentos a aplicaciones listas, validadas y con evidencia de pruebas.
+          </p>
+
+          <figure class="figure">
+            <img src="assets/hacia-donde-ir-mcp.png" alt="Ciclo MCP: documento funcional, configuración, aplicación y pruebas automáticas">
+            <figcaption class="caption">Visión: documento → configuración → aplicación → pruebas con evidencia</figcaption>
+          </figure>
+
+          <div class="benefits" style="margin-top: 1rem;">
+            <div class="benefit">
+              <h4>Desde el documento</h4>
+              <p>Definiciones funcionales (especificaciones, pantallas, prototipos) se convierten en configuración de Formas Configurables.</p>
+            </div>
+            <div class="benefit">
+              <h4>Aplicación operativa</h4>
+              <p>La configuración alimenta el runtime existente: pantallas, flujos y consultas sin reinventar cada módulo en código.</p>
+            </div>
+            <div class="benefit">
+              <h4>Pruebas con evidencia</h4>
+              <p>Se generan y ejecutan pruebas del comportamiento del flujo, con informes que documentan lo construido.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 1rem;">
+            No se trata de “inventar” toda la lógica de negocio desde un PDF, sino de un
+            <strong>pipeline de producto</strong>: el documento produce configuración auditable,
+            Formas Configurables la ejecuta, y el MCP orquesta validación, publicación,
+            identificación de pendientes de dominio y evidencia de pruebas.
+          </p>
+
+          <figure class="figure">
+            <img src="assets/camino-mcp-fases.png" alt="Camino por fases hacia un MCP completo de Formas Configurables">
+            <figcaption class="caption">Construcción por fases: de la gestión de configuración a la orquestación completa</figcaption>
+          </figure>
+
+          <ul class="cta-list">
+            <li><strong>Configuración:</strong> validar, limpiar y resumir proyectos de formas de forma fiable.</li>
+            <li><strong>Persistencia:</strong> registrar y publicar configuración en entornos controlados.</li>
+            <li><strong>Desde documentos:</strong> generar configuración a partir de specs y listar lo que aún requiere dominio.</li>
+            <li><strong>Scaffold:</strong> arrancar el módulo sobre el runtime compartido, sin duplicar pantallas.</li>
+            <li><strong>Pruebas y evidencia:</strong> automatizar casos e informes ligados a las funcionalidades creadas.</li>
+          </ul>
+
+          <p style="margin-top: 1.15rem;">
+            Con Formas Configurables, cada funcionalidad nueva es principalmente
+            <strong>configuración JSON</strong> interpretada por el mismo motor
+            (pantallas, flujos, validaciones e integración al Portal). Eso implica:
+          </p>
+          <ul class="cta-list">
+            <li><strong>Un solo modelo de ejecución:</strong> pantallas y reglas se comportan de forma homogénea; no hay N implementaciones distintas con N estilos de errores, seguridad y mantenimiento.</li>
+            <li><strong>Menos superficie de error del agente:</strong> generar componentes “a medida” por funcionalidad multiplica fallos. Generar o ajustar JSON es más acotado, auditable y fácil de validar.</li>
+            <li><strong>Evolución sin redeploy de cada pieza:</strong> los cambios de negocio suelen resolverse cambiando configuración, no reescribiendo ni regenerando componentes.</li>
+            <li><strong>Integración natural al Portal:</strong> lo construido entra por el mismo ensamblaje que lo disponible; el agente no inventa un mini-frontend distinto por dominio.</li>
+            <li><strong>Pruebas y gobierno más simples:</strong> se valida el JSON, el flujo y la evidencia sobre un contrato estable, en lugar de revisar código generado caso a caso.</li>
+            <li><strong>Mejor encaje con MCP / agentes:</strong> el agente orquesta inventario → configuración → prueba → publicación sobre herramientas fijas; no “programa una app nueva” en cada pedido.</li>
+          </ul>
+          <p>
+            En resumen: el modelo por configuración <strong>industrializa</strong> la construcción
+            (mismo motor, muchas definiciones); el modelo tradicional asistido por agente
+            <strong>artesanaliza</strong> cada funcionalidad (muchos artefactos únicos), y eso
+            escala peor en costo, riesgo, consistencia y tiempo de entrega.
+          </p>
+
+          <div class="message-box">
+            <strong>Destino:</strong> un MCP que permita crear aplicaciones complejas a partir de
+            definiciones funcionales y demostrar, con pruebas automáticas, que lo generado funciona —
+            acelerando la construcción del Portal y la evolución continua del negocio.
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
