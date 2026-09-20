@@ -202,6 +202,75 @@
     }
     .slide-block p:last-child { margin-bottom: 0; }
 
+    .mcp-fases {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1rem 0 1.25rem;
+    }
+    .mcp-fase {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 1rem 1.15rem 1.1rem;
+      border-left: 4px solid var(--primary);
+    }
+    .mcp-fase.fase-2 { border-left-color: #00838f; }
+    .mcp-fase.fase-3 { border-left-color: #2e7d32; }
+    .mcp-fase.fase-4 { border-left-color: #558b2f; }
+    .mcp-fase.fase-5 { border-left-color: #546e7a; }
+    .mcp-fase.fase-luego { border-left-color: var(--success); background: #f1f8f4; }
+    .mcp-fase h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.55rem 0;
+      color: var(--primary-dark);
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+    .mcp-fase h4 .fase-num {
+      flex-shrink: 0;
+      min-width: 1.7rem;
+      height: 1.7rem;
+      padding: 0 0.45rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .mcp-fase.fase-2 h4 .fase-num { background: #00838f; }
+    .mcp-fase.fase-3 h4 .fase-num { background: #2e7d32; }
+    .mcp-fase.fase-4 h4 .fase-num { background: #558b2f; }
+    .mcp-fase.fase-5 h4 .fase-num { background: #546e7a; }
+    .mcp-fase.fase-luego h4 .fase-num { background: var(--success); }
+    .mcp-fase h4 .fase-tag {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0;
+    }
+    .mcp-fase p {
+      margin: 0 0 0.65rem 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      text-align: justify;
+      color: var(--text-desc);
+    }
+    .mcp-fase p:last-child { margin-bottom: 0; }
+    .mcp-fase .cta-list {
+      margin: 0.35rem 0 0.25rem;
+    }
+
     .portal-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1265,7 +1334,7 @@
             </div>
             <div class="benefit">
               <h4>Pruebas con evidencia</h4>
-              <p>Se generan y ejecutan pruebas del comportamiento del flujo, con informes que documentan lo construido.</p>
+              <p>Pruebas funcionales E2E del flujo en el navegador, generadas desde la configuración, con informes y capturas que documentan lo construido.</p>
             </div>
           </div>
 
@@ -1281,15 +1350,157 @@
             <figcaption class="caption">Construcción por fases: de la gestión de configuración a la orquestación completa</figcaption>
           </figure>
 
-          <ul class="cta-list">
-            <li><strong>Configuración:</strong> validar, limpiar y resumir proyectos de formas de forma fiable.</li>
-            <li><strong>Persistencia:</strong> registrar y publicar configuración en entornos controlados.</li>
-            <li><strong>Desde documentos:</strong> generar configuración a partir de specs y listar lo que aún requiere dominio.</li>
-            <li><strong>Scaffold:</strong> arrancar el módulo sobre el runtime compartido, sin duplicar pantallas.</li>
-            <li><strong>Pruebas y evidencia:</strong> automatizar casos e informes ligados a las funcionalidades creadas.</li>
-          </ul>
+          <p>
+            Ese esquema se construye por etapas. Cada fase entrega un resultado usable
+            y prepara la siguiente; no se espera tener “todo el MCP” para empezar a ganar valor.
+          </p>
 
-          <p style="margin-top: 1.15rem;">
+          <div class="mcp-fases">
+            <div class="mcp-fase fase-1">
+              <h4>
+                <span class="fase-num">1</span>
+                Configuración
+                <span class="fase-tag">Validar y gestionar proyectos</span>
+              </h4>
+              <p>
+                El artefacto central es el proyecto de Formas Configurables (JSON): pantallas,
+                campos, pasos, botones, validaciones y consultas. En esta fase el MCP aporta
+                herramientas fiables para <strong>validar</strong> que el proyecto cumple el modelo,
+                <strong>limpiarlo</strong> (simplificar sin perder semántica) y
+                <strong>resumirlo</strong> (qué pantallas hay, qué atributos, qué falta).
+              </p>
+              <p>
+                El resultado es que cualquier agente —o cualquier persona del equipo— puede
+                auditar y corregir configuración <strong>sin inventar reglas en el prompt</strong>:
+                la verdad está en el modelo y en las herramientas, no en una conversación improvisada.
+              </p>
+              <ul class="cta-list">
+                <li><strong>Entregable:</strong> proyectos válidos, comparables entre versiones y listos para publicar.</li>
+                <li><strong>Valor:</strong> menos errores silenciosos y menos dependencia de “quién escribió el JSON”.</li>
+              </ul>
+            </div>
+
+            <div class="mcp-fase fase-2">
+              <h4>
+                <span class="fase-num">2</span>
+                Persistencia
+                <span class="fase-tag">Registrar y publicar</span>
+              </h4>
+              <p>
+                La configuración validada debe vivir donde el runtime la consume: registro en
+                tablas / API de Formas Configurables, y publicación controlada entre entornos
+                (desarrollo → pruebas). El MCP automatiza el ciclo
+                <strong>JSON → registro → servicio de la configuración</strong>, sin pasos manuales opacos.
+              </p>
+              <p>
+                También permite <strong>exportar</strong> lo que está en el entorno de vuelta a JSON,
+                para versionar, comparar o corregir. Al inicio se evita tocar producción hasta que
+                validación y pruebas sean estables.
+              </p>
+              <ul class="cta-list">
+                <li><strong>Entregable:</strong> la misma configuración disponible de forma repetible en el entorno de prueba.</li>
+                <li><strong>Valor:</strong> lo que se diseñó en JSON es exactamente lo que el Portal puede ejecutar.</li>
+              </ul>
+            </div>
+
+            <div class="mcp-fase fase-3">
+              <h4>
+                <span class="fase-num">3</span>
+                Desde documentos
+                <span class="fase-tag">Spec → configuración</span>
+              </h4>
+              <p>
+                Aquí entra la generación asistida: a partir de especificaciones, HTML de pantallas,
+                imágenes o material legacy, el agente (guiado por el skill de Formas Configurables)
+                produce el proyecto JSON. El MCP no “adivina” la app entera: genera la parte
+                <strong>declarativa</strong> (formas, flujos, consultas) y deja explícita una
+                <strong>lista de pendientes de dominio</strong> — funciones de base de datos,
+                APIs de negocio, componentes estáticos — que el JSON solo no puede inventar.
+              </p>
+              <p>
+                Antes de registrar, conviene una revisión humana de cobertura (pantallas y campos).
+                Así se acelera la construcción sin ocultar lo que aún requiere trabajo de negocio o backend.
+              </p>
+              <ul class="cta-list">
+                <li><strong>Entregable:</strong> JSON + checklist de gaps, listos para persistir y completar.</li>
+                <li><strong>Valor:</strong> pasar de documento a configuración usable en horas, no en semanas de UI a mano.</li>
+              </ul>
+            </div>
+
+            <div class="mcp-fase fase-4">
+              <h4>
+                <span class="fase-num">4</span>
+                Scaffold
+                <span class="fase-tag">Módulo listo para arrancar</span>
+              </h4>
+              <p>
+                Con la configuración publicada, falta el “esqueleto” del módulo en el Portal:
+                rutas, consumo del runtime de Formas Configurables, enganche a menús y, si aplica,
+                stubs o contratos para los gaps de dominio. El scaffold es
+                <strong>delgado a propósito</strong>: no regenera pantallas en React; reutiliza el
+                motor compartido (DynamicForm) para materializar lo definido en el JSON.
+              </p>
+              <p>
+                El criterio de éxito es concreto: el módulo arranca, muestra las formas desde la
+                configuración registrada e integra al Portal con el mismo patrón que las capacidades
+                ya disponibles.
+              </p>
+              <ul class="cta-list">
+                <li><strong>Entregable:</strong> módulo operable en el shell del Portal, sin mini-frontends distintos por dominio.</li>
+                <li><strong>Valor:</strong> tiempo de puesta en marcha corto y consistencia visual/operativa.</li>
+              </ul>
+            </div>
+
+            <div class="mcp-fase fase-5">
+              <h4>
+                <span class="fase-num">5</span>
+                Pruebas y evidencia
+                <span class="fase-tag">Automatizar y documentar</span>
+              </h4>
+              <p>
+                Construir no alcanza: hay que <strong>demostrar</strong> que lo generado funciona.
+                En esta fase el MCP genera y ejecuta pruebas a partir del propio proyecto JSON —
+                validación de configuración, contratos de API y, sobre todo,
+                <strong>pruebas funcionales E2E</strong> en el navegador (por ejemplo con Playwright):
+                el mismo camino que seguiría un usuario sobre el módulo ya montado.
+              </p>
+              <p>
+                Las E2E cubren escenarios como smoke por pantalla, camino feliz entre pasos,
+                validaciones negativas, cascadas y filtros, y regresión cuando el negocio cambia
+                la configuración. Cada corrida deja un <strong>informe con evidencia</strong>
+                (caso, resultado, capturas) ligado a las funcionalidades creadas o modificadas.
+              </p>
+              <p>
+                Como el motor es el mismo para todos los módulos, los casos se derivan de la
+                configuración de forma homogénea: no hace falta inventar una suite distinta por
+                cada pantalla escrita a mano.
+              </p>
+              <ul class="cta-list">
+                <li><strong>Entregable:</strong> suite ejecutable + evidencia auditable por entrega.</li>
+                <li><strong>Valor:</strong> aceptación más rápida, menos riesgo al evolucionar y gobierno del ciclo de vida.</li>
+              </ul>
+            </div>
+
+            <div class="mcp-fase fase-luego">
+              <h4>
+                <span class="fase-num">→</span>
+                Orquestación completa
+                <span class="fase-tag">Documento → aplicación</span>
+              </h4>
+              <p>
+                Cuando las cinco fases existen como herramientas estables, se puede componer un
+                flujo de alto nivel: documento → proyecto → validar → registrar → scaffold →
+                pruebas con evidencia → informe y gaps pendientes. Ahí el MCP se siente “completo”:
+                el agente orquesta el pipeline; Formas Configurables ejecuta; el negocio recibe
+                aplicación y prueba, no solo un borrador de pantallas.
+              </p>
+            </div>
+          </div>
+
+          <h4 style="font-family: var(--font-display); margin: 1.35rem 0 0.65rem; color: var(--primary-dark); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em;">
+            Por qué este enfoque encaja con un MCP
+          </h4>
+          <p>
             Con Formas Configurables, cada funcionalidad nueva es principalmente
             <strong>configuración JSON</strong> interpretada por el mismo motor
             (pantallas, flujos, validaciones e integración al Portal). Eso implica:
