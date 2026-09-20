@@ -471,7 +471,7 @@
       background: #e3f2fd;
     }
     .coverage-summary .bar .done {
-      width: 40%;
+      width: 45%;
       background: linear-gradient(90deg, #2e7d32, #66bb6a);
     }
     .coverage-summary .bar .todo {
@@ -794,7 +794,8 @@
         Modernizar el Portal de Seguros Online ya no tiene que ser un proyecto
         eterno ni una apuesta a reescribirlo todo. Hoy podemos partir de
         <strong>capacidades reales ya construidas</strong> — administración y seguridad,
-        cotización y emisión, órdenes médicas, notificaciones y mensajes, consultas varias —
+        cotización y emisión, órdenes médicas, notificaciones y mensajes, consultas varias,
+        registro de transacciones y traza —
         e integrarlas en una experiencia unificada para clientes, fuerza de ventas,
         prestadores y personal interno.
       </p>
@@ -863,12 +864,13 @@
             <div class="capacidad"><span class="nro">02</span><span class="txt">Cotización y emisión Auto / Personas</span></div>
             <div class="capacidad"><span class="nro">03</span><span class="txt">Gestión de órdenes médicas</span></div>
             <div class="capacidad"><span class="nro">04</span><span class="txt">Notificaciones y mensajes (correos, SMS, RRSS)</span></div>
-            <div class="capacidad"><span class="nro">05</span><span class="txt">Notificación de siniestros Auto</span></div>
-            <div class="capacidad"><span class="nro">06</span><span class="txt">Notificación de siniestros Personas</span></div>
-            <div class="capacidad"><span class="nro">07</span><span class="txt">Consultas de cartera (clientes, pólizas, recibos, etc.)</span></div>
-            <div class="capacidad"><span class="nro">08</span><span class="txt">Gestión de requerimientos (workflow)</span></div>
-            <div class="capacidad"><span class="nro">09</span><span class="txt">Gestión de documentos</span></div>
-            <div class="capacidad"><span class="nro">10</span><span class="txt">Otras funcionalidades menores</span></div>
+            <div class="capacidad"><span class="nro">05</span><span class="txt">Registro de transacciones y traza</span></div>
+            <div class="capacidad"><span class="nro">06</span><span class="txt">Notificación de siniestros Auto</span></div>
+            <div class="capacidad"><span class="nro">07</span><span class="txt">Notificación de siniestros Personas</span></div>
+            <div class="capacidad"><span class="nro">08</span><span class="txt">Consultas de cartera (clientes, pólizas, recibos, etc.)</span></div>
+            <div class="capacidad"><span class="nro">09</span><span class="txt">Gestión de requerimientos (workflow)</span></div>
+            <div class="capacidad"><span class="nro">10</span><span class="txt">Gestión de documentos</span></div>
+            <div class="capacidad"><span class="nro">11</span><span class="txt">Otras funcionalidades menores</span></div>
           </div>
 
           <p style="margin-top: 1rem; margin-bottom: 0;">
@@ -958,6 +960,10 @@
               <h4>Menor riesgo</h4>
               <p>Reutilizar lo disponible y completar por fases, con entregables visibles en cada etapa.</p>
             </div>
+            <div class="benefit">
+              <h4>Transacciones y traza</h4>
+              <p>Registro homogéneo de transacciones y traza de operación en cada flujo, integrado al motor compartido.</p>
+            </div>
           </div>
 
           <div class="comparativa">
@@ -994,6 +1000,11 @@
               <div class="cell trad">Alto costo de cambio</div>
               <div class="cell fc">Evolución controlada y auditable</div>
             </div>
+            <div class="comparativa-row">
+              <div class="aspect">Registro de transacciones y traza</div>
+              <div class="cell trad">Se implementa aparte en cada funcionalidad</div>
+              <div class="cell fc">Queda incluido en el motor compartido</div>
+            </div>
           </div>
 
           <figure class="figure">
@@ -1018,7 +1029,8 @@
           </p>
           <p>
             Eso cambia el punto de partida del proyecto. En lugar de desarrollar desde cero
-            administración de usuarios, cotización y emisión, órdenes médicas o notificaciones,
+            administración de usuarios, cotización y emisión, órdenes médicas, notificaciones
+            o el registro de transacciones y traza,
             se <strong>integran piezas probadas</strong> al Portal unificado: misma lógica de
             configuración, misma experiencia de captura y la posibilidad de evolucionarlas
             sin redesplegar por cada ajuste. Parte significativa del valor de la primera fase
@@ -1029,7 +1041,7 @@
             y coherencia con el modelo que sostendrá el resto de la modernización.
           </p>
           <figure class="figure">
-            <img src="assets/capacidades-disponibles.png" alt="Cuatro capacidades disponibles: administración y seguridad, cotización y emisión, órdenes médicas, notificaciones y mensajes">
+            <img src="assets/capacidades-disponibles.png" alt="Capacidades disponibles para integrar al nuevo Portal">
             <figcaption class="caption">Capacidades listas para integrar al nuevo Portal</figcaption>
           </figure>
           <div class="message-box">
@@ -1044,6 +1056,9 @@
             <br>
             Detalle de Órdenes médicas:
             <a href="ordenes_medicas/index.html" style="color:#0d47a1; font-weight:700; text-decoration:none;">ver funcionalidades →</a>
+            <br>
+            Detalle de Registro de transacciones y traza:
+            <a href="transacciones/index.html" style="color:#0d47a1; font-weight:700; text-decoration:none;">ver funcionalidades →</a>
           </div>
         </section>
 
@@ -1060,15 +1075,15 @@
 
           <div class="coverage-summary">
             <div class="bar-wrap">
-              <div class="bar-label">Cobertura del Portal · 10 capacidades clave</div>
-              <div class="bar" role="img" aria-label="4 disponibles de 10">
+              <div class="bar-label">Cobertura del Portal · 11 capacidades clave</div>
+              <div class="bar" role="img" aria-label="5 disponibles de 11">
                 <span class="done"></span>
                 <span class="todo"></span>
               </div>
             </div>
             <div class="counts">
               <div class="count ok">
-                <span class="n">4</span>
+                <span class="n">5</span>
                 <span class="l">Disponibles</span>
               </div>
               <div class="count build">
@@ -1113,6 +1128,13 @@
                   <span class="mark" aria-hidden="true">✓</span>
                   <div class="item">
                     <div class="item-title">Notificaciones y mensajes (correos, SMS, RRSS)</div>
+                  </div>
+                </li>
+                <li>
+                  <span class="mark" aria-hidden="true">✓</span>
+                  <div class="item">
+                    <div class="item-title">Registro de transacciones y traza</div>
+                    <a class="item-link" href="transacciones/index.html">ver funcionalidades →</a>
                   </div>
                 </li>
               </ul>
@@ -1196,7 +1218,7 @@
             <figcaption class="caption">Fase 1: valor inmediato · Fase 2: ampliación · Fase 3: cierre</figcaption>
           </figure>
           <ul class="cta-list">
-            <li><strong>Fase 1 — Valor inmediato:</strong> Portal unificado + capacidades disponibles (usuarios, cotización/emisión, órdenes médicas, notificaciones y mensajes).</li>
+            <li><strong>Fase 1 — Valor inmediato:</strong> Portal unificado + capacidades disponibles (usuarios, cotización/emisión, órdenes médicas, notificaciones y mensajes, transacciones y traza).</li>
             <li><strong>Fase 2 — Ampliación:</strong> siniestros Auto y Personas, consultas de cartera.</li>
             <li><strong>Fase 3 — Cierre:</strong> requerimientos, documentos y funcionalidades menores.</li>
           </ul>

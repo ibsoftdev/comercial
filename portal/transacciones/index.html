@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transacciones y Traza · Portal de Seguros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos-demo.css">
+  <style>
+    :root {
+      --font-display: "Outfit", "Segoe UI", sans-serif;
+      --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .app-wrap { max-width: 980px; }
+
+    .comercial-header {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      background-image: url('ImagenEmpresa.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: cover;
+      background-color: #eef3f8;
+      min-height: 140px;
+      padding: 0.85rem 0.9rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .comercial-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.55) 40%, rgba(255,255,255,.92) 65%, #fff 80%);
+      pointer-events: none;
+    }
+    .comercial-header .title-wrap {
+      position: relative;
+      z-index: 1;
+      margin-left: auto;
+      max-width: 62%;
+      min-width: 280px;
+      padding: 0.95rem 1.15rem 1rem;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(13,71,161,.12);
+      border-left: 5px solid #0d47a1;
+      box-shadow: 0 6px 20px rgba(0,33,113,.12);
+    }
+    .comercial-header h1 {
+      font-family: var(--font-display);
+      margin: 0;
+      line-height: 1.28;
+      color: #061433;
+    }
+    .comercial-header .eyebrow {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0d47a1;
+      margin-bottom: 0.35rem;
+    }
+    .comercial-header .headline {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .comercial-header .subhead {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1565c0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0d47a1;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .intro {
+      margin: 0 0 1.5rem;
+      max-width: 92%;
+    }
+    .intro h2 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      margin: 0 0 0.6rem;
+    }
+    .intro p {
+      margin: 0;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid #0d47a1;
+      border-radius: 12px;
+      padding: 0.95rem 1rem;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .pillar.agregado { border-top-color: #0d47a1; }
+    .pillar.ops { border-top-color: #00838f; }
+    .pillar.traza { border-top-color: #2e7d32; }
+    .pillar h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin: 0 0 0.35rem;
+      color: var(--primary-dark);
+    }
+    .pillar p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 0 0 1.35rem;
+    }
+    .benefit {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.95rem 1.05rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .benefit h4 {
+      font-family: var(--font-display);
+      margin: 0 0 0.4rem;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .benefit p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .badge {
+      font-family: var(--font-display);
+      display: inline-block;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+    .badge-disponible {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+    }
+
+    .figure.figure-esquema img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    .cta-list {
+      margin: 0.75rem 0 0.25rem;
+      padding-left: 1.2rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .cta-list li { margin-bottom: 0.4rem; }
+    .cta-list strong {
+      font-family: var(--font-display);
+      color: var(--primary-dark);
+    }
+
+    .slide-block {
+      margin-bottom: 1.6rem;
+      padding: 1.2rem 1.35rem;
+      background: #fafafa;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--primary);
+    }
+    .slide-block.teal { border-left-color: #00838f; }
+    .slide-block.green { border-left-color: #2e7d32; }
+    .slide-block.amber { border-left-color: #ef6c00; }
+    .slide-block h3 {
+      font-family: var(--font-display);
+      margin: 0 0 0.7rem;
+      color: var(--primary-dark);
+      font-size: 1.18rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .slide-block h3 .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    .slide-block.teal h3 .num { background: #00838f; }
+    .slide-block.green h3 .num { background: #2e7d32; }
+    .slide-block.amber h3 .num { background: #ef6c00; }
+    .slide-block > p {
+      margin: 0 0 0.85rem;
+      text-align: justify;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      margin: 0.75rem 0 1rem;
+    }
+    .feature {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .feature strong {
+      font-family: var(--font-display);
+      display: block;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .feature span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .figure {
+      margin: 1rem 0 0.35rem;
+      text-align: center;
+    }
+    .figure img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      background: #fff;
+      display: inline-block;
+    }
+    .figure .caption {
+      margin-top: 0.55rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .message-box {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+      border: 1px solid rgba(13,71,161,.25);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .message-box strong {
+      font-family: var(--font-display);
+    }
+
+    @media (max-width: 800px) {
+      .pillars, .feature-grid, .benefits { grid-template-columns: 1fr; }
+      .comercial-header .title-wrap { max-width: 100%; }
+      .comercial-header::before { background: rgba(255,255,255,.9); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-wrap">
+    <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+
+    <header class="comercial-header">
+      <div class="title-wrap">
+        <h1>
+          <span class="eyebrow">Capacidad disponible</span>
+          <span class="headline">Transacciones y traza</span>
+          <span class="subhead">Registro y auditoría de operaciones de usuario</span>
+        </h1>
+      </div>
+    </header>
+
+    <div class="intro">
+      <span class="badge badge-disponible">Disponible</span>
+      <h2>Auditoría operativa de punta a punta</h2>
+      <p>
+        Esta capacidad permite consultar las <strong>transacciones</strong> registradas
+        por las aplicaciones del Portal cuando un usuario ejecuta una operación de negocio
+        (por ejemplo, una solicitud de cotización). Cada transacción puede ampliarse hasta
+        la <strong>traza paso a paso</strong>: qué hizo el usuario, qué datos capturó y,
+        si hubo fallo, el detalle del error.
+      </p>
+      <p style="margin-top: 0.75rem;">
+        No es un mockup ni un plan a futuro: es una capacidad operativa de auditoría,
+        alineada con el modelo de Formas Configurables — el registro y la traza quedan
+        integrados al motor compartido, listos para sostener el Portal unificado.
+      </p>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit">
+        <h4>Consulta consolidada</h4>
+        <p>Filtros por periodo, tipo, estado, usuario y rol, con cantidades por grupo.</p>
+      </div>
+      <div class="benefit">
+        <h4>Detalle por operación</h4>
+        <p>Cada transacción individual con fecha, estado, documento y acceso al tracing.</p>
+      </div>
+      <div class="benefit">
+        <h4>Traza reconstruible</h4>
+        <p>Pasos de inicio a fin, con valores capturados y evidencia de errores si aplica.</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar agregado">
+        <h3>Resumen agregado</h3>
+        <p>Cantidades por usuario, rol y tipo de transacción</p>
+      </div>
+      <div class="pillar ops">
+        <h3>Operaciones</h3>
+        <p>Listado individual de cada transacción del grupo</p>
+      </div>
+      <div class="pillar traza">
+        <h3>Traza</h3>
+        <p>Rastreo de pasos y detalle ampliado de cada invocación</p>
+      </div>
+    </div>
+
+    <figure class="figure figure-esquema">
+      <img src="assets/esquemas/trx-tres-niveles.png" alt="Tres niveles: resumen agregado, operaciones y traza paso a paso">
+      <figcaption class="caption">Tres niveles de profundidad: resumen, operaciones y traza</figcaption>
+    </figure>
+
+    <div class="card">
+      <div class="card-body">
+
+        <section class="slide-block">
+          <h3><span class="num">1</span> Resumen agregado</h3>
+          <p>
+            El administrador define criterios de búsqueda (periodo, tipo de transacción,
+            estado, rol y usuario) y obtiene un resumen consolidado: cuántas operaciones
+            de cada tipo registró un usuario bajo un rol. Desde la cantidad se abre el
+            detalle del grupo seleccionado.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Filtros de negocio</strong>
+              <span>Periodo, fechas, tipo, estado, rol y usuario.</span>
+            </div>
+            <div class="feature">
+              <strong>Cantidad clicable</strong>
+              <span>El conteo abre el listado de operaciones del mismo grupo.</span>
+            </div>
+            <div class="feature">
+              <strong>Vista exportable</strong>
+              <span>Acciones de búsqueda, descarga y ajuste de columnas.</span>
+            </div>
+            <div class="feature">
+              <strong>Contexto de sesión</strong>
+              <span>Agrupación por usuario y rol bajo el cual se ejecutó la operación.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/screens/01-consulta-agregada.png" alt="Consulta agregada de transacciones con criterios y cantidades">
+            <figcaption class="caption">Criterios de búsqueda y resumen agregado por tipo de operación</figcaption>
+          </figure>
+        </section>
+
+        <section class="slide-block teal">
+          <h3><span class="num">2</span> Operaciones individuales</h3>
+          <p>
+            A partir del resumen, se listan las transacciones una a una: fecha, hora,
+            tipo, estado, documento, usuario y rol. Desde cada fila se accede al
+            <strong>tracing</strong> — el número de pasos registrados para esa operación.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Una fila por operación</strong>
+              <span>Identificación clara de cada transacción del grupo filtrado.</span>
+            </div>
+            <div class="feature">
+              <strong>Estado y documento</strong>
+              <span>Resultado de la operación y documento asociado, si aplica.</span>
+            </div>
+            <div class="feature">
+              <strong>Botón TRACING</strong>
+              <span>Muestra la cantidad de pasos y abre el rastreo detallado.</span>
+            </div>
+            <div class="feature">
+              <strong>Continuidad del drill-down</strong>
+              <span>Del consolidado al caso concreto sin perder el contexto de filtros.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/screens/02-detalle-operaciones.png" alt="Listado de operaciones individuales con botones TRACING">
+            <figcaption class="caption">Operaciones individuales del tipo seleccionado, con acceso a tracing</figcaption>
+          </figure>
+        </section>
+
+        <section class="slide-block amber">
+          <h3><span class="num">3</span> Rastreo de pasos</h3>
+          <p>
+            El diálogo de rastreo reconstruye la ejecución: secuencia de pasos desde el
+            inicio hasta el fin de la operación. En cada paso se ve la hora, el mensaje
+            legible y un resumen del detalle técnico (valores de pantalla, rutas invocadas
+            o registro de error).
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Secuencia temporal</strong>
+              <span>Pasos ordenados para entender el recorrido de la operación.</span>
+            </div>
+            <div class="feature">
+              <strong>Mensaje y detalle</strong>
+              <span>Qué ocurrió en el paso y qué información técnica quedó registrada.</span>
+            </div>
+            <div class="feature">
+              <strong>Evidencia de fallo</strong>
+              <span>Si la invocación falló, el error se refleja en el detalle de traza.</span>
+            </div>
+            <div class="feature">
+              <strong>Ampliar TRACE</strong>
+              <span>Cuando el detalle es extenso, se abre la traza completa.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/screens/03-rastreo-pasos.png" alt="Diálogo de rastreo de pasos de una transacción">
+            <figcaption class="caption">Rastreo de pasos: inicio, avance, cálculo y registro</figcaption>
+          </figure>
+        </section>
+
+        <section class="slide-block green">
+          <h3><span class="num">4</span> Traza completa ampliada</h3>
+          <p>
+            Cuando el detalle de un paso es largo, la vista ampliada muestra el contenido
+            completo: valores capturados en pantalla, endpoint invocado o el registro del
+            error. Es la evidencia fina para soporte, auditoría y diagnóstico.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Detalle íntegro</strong>
+              <span>Sin truncar el contenido técnico del paso seleccionado.</span>
+            </div>
+            <div class="feature">
+              <strong>Datos de captura</strong>
+              <span>Valores de pantalla asociados a la invocación, cuando aplica.</span>
+            </div>
+            <div class="feature">
+              <strong>Diagnóstico</strong>
+              <span>Base para analizar fallos sin reproducir a ciegas la operación.</span>
+            </div>
+            <div class="feature">
+              <strong>Cierre del drill-down</strong>
+              <span>De la cantidad agregada hasta el detalle último de la traza.</span>
+            </div>
+          </div>
+          <figure class="figure">
+            <img src="assets/screens/04-traza-completa.png" alt="Vista ampliada de la traza completa de un paso">
+            <figcaption class="caption">Traza completa ampliada del paso seleccionado</figcaption>
+          </figure>
+        </section>
+
+        <section class="slide-block">
+          <h3><span class="num">5</span> Un patrón de auditoría reutilizable</h3>
+          <p>
+            Buscar, agregar, detallar y rastrear forman un patrón claro de auditoría
+            operativa. El mismo modelo sostiene las aplicaciones del Portal: cada flujo
+            de Formas Configurables puede registrar transacciones y traza de forma
+            homogénea, sin inventar un mecanismo distinto por funcionalidad.
+          </p>
+
+          <figure class="figure figure-esquema">
+            <img src="assets/esquemas/trx-drilldown.png" alt="Drill-down: Buscar, Agregar, Detallar y Rastrear">
+            <figcaption class="caption">Drill-down de auditoría: de la consulta consolidada a la traza</figcaption>
+          </figure>
+
+          <ul class="cta-list">
+            <li><strong>Buscar:</strong> criterios de periodo, tipo, estado, usuario y rol.</li>
+            <li><strong>Agregar:</strong> cantidades consolidadas por grupo de operación.</li>
+            <li><strong>Detallar:</strong> cada transacción individual del grupo.</li>
+            <li><strong>Rastrear:</strong> pasos y traza completa hasta el detalle técnico.</li>
+          </ul>
+
+          <figure class="figure">
+            <img src="assets/collages/consulta-resumen-detalle.png" alt="Collage: resumen agregado y operaciones individuales">
+            <figcaption class="caption">En la práctica: del resumen al detalle sobre pantallas reales</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/collages/rastreo-traza.png" alt="Collage: rastreo de pasos y traza completa">
+            <figcaption class="caption">Rastreo y traza completa: evidencia paso a paso</figcaption>
+          </figure>
+
+          <div class="message-box">
+            <strong>Mensaje clave:</strong> el Registro de Transacciones y Traza ya está
+            disponible como capacidad de auditoría operativa. Integra al nuevo Portal la
+            visibilidad de quién hizo qué, cuándo y con qué resultado — alineado con
+            Formas Configurables y con las capacidades de la Fase 1.
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <p style="margin: 1.5rem 0 2rem; text-align: center;">
+      <a class="back-link" href="../index.html">← Volver a la presentación del Portal</a>
+    </p>
+  </div>
+</body>
+</html>
