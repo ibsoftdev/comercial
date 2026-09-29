@@ -1383,29 +1383,6 @@
             <div class="mcp-fase fase-2">
               <h4>
                 <span class="fase-num">2</span>
-                Persistencia
-                <span class="fase-tag">Registrar y publicar</span>
-              </h4>
-              <p>
-                La configuración validada debe vivir donde el runtime la consume: registro en
-                tablas / API de Formas Configurables, y publicación controlada entre entornos
-                (desarrollo → pruebas). El MCP automatiza el ciclo
-                <strong>JSON → registro → servicio de la configuración</strong>, sin pasos manuales opacos.
-              </p>
-              <p>
-                También permite <strong>exportar</strong> lo que está en el entorno de vuelta a JSON,
-                para versionar, comparar o corregir. Al inicio se evita tocar producción hasta que
-                validación y pruebas sean estables.
-              </p>
-              <ul class="cta-list">
-                <li><strong>Entregable:</strong> la misma configuración disponible de forma repetible en el entorno de prueba.</li>
-                <li><strong>Valor:</strong> lo que se diseñó en JSON es exactamente lo que el Portal puede ejecutar.</li>
-              </ul>
-            </div>
-
-            <div class="mcp-fase fase-3">
-              <h4>
-                <span class="fase-num">3</span>
                 Desde documentos
                 <span class="fase-tag">Spec → configuración</span>
               </h4>
@@ -1424,6 +1401,29 @@
               <ul class="cta-list">
                 <li><strong>Entregable:</strong> JSON + checklist de gaps, listos para persistir y completar.</li>
                 <li><strong>Valor:</strong> pasar de documento a configuración usable en horas, no en semanas de UI a mano.</li>
+              </ul>
+            </div>
+
+            <div class="mcp-fase fase-3">
+              <h4>
+                <span class="fase-num">3</span>
+                Persistencia
+                <span class="fase-tag">Registrar y publicar</span>
+              </h4>
+              <p>
+                La configuración validada debe vivir donde el runtime la consume: registro en
+                tablas / API de Formas Configurables, y publicación controlada entre entornos
+                (desarrollo → pruebas). El MCP automatiza el ciclo
+                <strong>JSON → registro → servicio de la configuración</strong>, sin pasos manuales opacos.
+              </p>
+              <p>
+                También permite <strong>exportar</strong> lo que está en el entorno de vuelta a JSON,
+                para versionar, comparar o corregir. Al inicio se evita tocar producción hasta que
+                validación y pruebas sean estables.
+              </p>
+              <ul class="cta-list">
+                <li><strong>Entregable:</strong> la misma configuración disponible de forma repetible en el entorno de prueba.</li>
+                <li><strong>Valor:</strong> lo que se diseñó en JSON es exactamente lo que el Portal puede ejecutar.</li>
               </ul>
             </div>
 
